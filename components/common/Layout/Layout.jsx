@@ -1,14 +1,16 @@
-import { Navbar } from "@/components/common";
-import { Footer } from "@/components/common";
+import { Navbar, Footer } from "@/components/common";
+import ThemeWrapper from "store/theme-context";
 
 import styles from "./Layout.module.css";
 
 export default function Layout({ children }) {
   return (
-    <>
-      <Navbar />
-      {children}
-      <Footer />
-    </>
+    <div className={styles.layoutContainer}>
+      <ThemeWrapper>
+        <Navbar />
+        {children}
+        <Footer />
+      </ThemeWrapper>
+    </div>
   );
 }

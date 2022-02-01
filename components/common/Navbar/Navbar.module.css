@@ -1,0 +1,20 @@
+.root {
+  height: 110px;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.root ul {
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.root ul li {
+  cursor: pointer;
+  list-style-type: none;
+}
