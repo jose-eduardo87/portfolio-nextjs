@@ -1,24 +1,27 @@
 import { createContext, useContext, useState, useCallback } from "react";
-import { gsap } from "gsap/dist/gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
+import GSAP from "helpers/GSAPClass";
+
+const GSAPInstance = new GSAP();
 
 const GSAPContext = createContext({
   links: [],
   getLinks: (DOMElement) => {},
   register: () => {},
+  from: (DOMElement, options) => {},
 });
 
 export default function GSAPProvider({ children }) {
   const [links, getLinks] = useState([]);
+
   const GSAP = {
     links,
     getLinks: useCallback(
-      (element) => getLinks(gsap.utils.toArray(element)),
+      (element) => getLinks(GSAPInstance.getLinks(element)),
       []
     ),
-    register: useCallback(
-      () => gsap.registerPlugin(ScrollTrigger, ScrollToPlugin),
+    register: useCallback(() => GSAPInstance.register(), []),
+    from: useCallback(
+      (DOMElement, options) => GSAPInstance.from(DOMElement, options),
       []
     ),
   };
