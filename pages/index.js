@@ -1,10 +1,19 @@
 import Head from "next/head";
 import { Layout } from "@/components/common";
-import { HeroSection } from "@/components/sections";
+import { Container } from "@/components/ui";
+import {
+  HeroSection,
+  AboutSection,
+  ContactSection,
+} from "@/components/sections";
+import { useGSAP } from "store/GSAP-context";
 
-Home.Layout = Layout;
+Portfolio.Layout = Layout;
 
-export default function Home() {
+export default function Portfolio() {
+  const { register } = useGSAP();
+  register(); // METHOD RESPONSIBLE FOR REGISTERING ScrollTrigger and ScrollToPlugin
+
   return (
     <>
       <Head>
@@ -15,6 +24,10 @@ export default function Home() {
         />
       </Head>
       <HeroSection />
+      <Container>
+        <AboutSection />
+        <ContactSection />
+      </Container>
     </>
   );
 }

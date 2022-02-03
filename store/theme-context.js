@@ -6,7 +6,7 @@ const ThemeContext = createContext({
 });
 
 export default function ThemeWrapper({ children }) {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
   const toggleMode = () => setIsDark((currentState) => !currentState);
 
   useEffect(() => {
