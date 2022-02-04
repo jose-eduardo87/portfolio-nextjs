@@ -9,20 +9,24 @@ class GSAP {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
   }
 
-  getLinks(DOMNodeList) {
+  getSections(DOMNodeList) {
     return gsap.utils.toArray(DOMNodeList);
   }
 
-  from(DOMElement, options) {
-    gsap.from(DOMElement, options);
+  from(DOMElement, options, position) {
+    gsap.from(DOMElement, options, position);
   }
 
-  to(DOMElement, options) {
-    gsap.to(DOMElement, options);
+  to(DOMElement, options, position) {
+    gsap.to(DOMElement, options, position);
   }
 
   fromTo(DOMElement, optionsFrom, optionsTo) {
     gsap.fromTo(DOMElement, optionsFrom, optionsTo);
+  }
+
+  timeline(options) {
+    return gsap.timeline(options);
   }
 }
 

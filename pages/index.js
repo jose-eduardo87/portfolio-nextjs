@@ -5,14 +5,15 @@ import {
   HeroSection,
   AboutSection,
   ContactSection,
+  WorkSection,
 } from "@/components/sections";
 import { useGSAP } from "store/GSAP-context";
 
 Portfolio.Layout = Layout;
 
 export default function Portfolio() {
-  const { register } = useGSAP();
-  register(); // METHOD RESPONSIBLE FOR REGISTERING ScrollTrigger and ScrollToPlugin
+  // const { register } = useGSAP();
+  // register(); // METHOD RESPONSIBLE FOR REGISTERING ScrollTrigger and ScrollToPlugin
 
   return (
     <>
@@ -26,6 +27,7 @@ export default function Portfolio() {
       <HeroSection />
       <Container>
         <AboutSection />
+        <WorkSection />
         <ContactSection />
       </Container>
     </>

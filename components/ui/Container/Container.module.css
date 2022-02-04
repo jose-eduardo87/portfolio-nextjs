@@ -1,4 +1,8 @@
 .container {
-  width: 80vw;
+  width: 60vw;
   margin: 0 auto;
+}
+
+.container section {
+  margin-top: 8rem;
 }
