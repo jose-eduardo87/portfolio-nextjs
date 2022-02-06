@@ -45,12 +45,17 @@ export default function HeroSection() {
           I develop{" "}
           <span>
             <Typewriter
-              words={["websites", "test1", "test2", "thoughts into code."]}
+              words={[
+                "amazing websites.",
+                "test1",
+                "test2",
+                "thoughts into code.",
+              ]}
               loop={5}
               cursor
               cursorStyle={"l"}
-              typeSpeed={70}
-              deleteSpeed={50}
+              typeSpeed={90}
+              deleteSpeed={70}
               delaySpeed={1000}
             />
           </span>

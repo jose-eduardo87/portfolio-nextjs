@@ -1,6 +1,15 @@
 import { useRef, useEffect } from "react";
 import Image from "next/image";
-import MoveStuffAround from "@/components/Ticker/";
+import { Card, Marquee } from "@/components/ui/";
+import {
+  MongoDB,
+  NextJS,
+  NodeJS,
+  Postman,
+  ReactJS,
+  // TechGuru,
+  TypeScript,
+} from "@/components/icons";
 import {
   FaFacebookSquare,
   FaGithubSquare,
@@ -8,7 +17,6 @@ import {
   FaTwitterSquare,
 } from "react-icons/fa";
 import { useGSAP } from "store/GSAP-context";
-// import { ICONS } from "helpers/paths";
 import { useTheme } from "store/theme-context";
 
 import styles from "./AboutSection.module.css";
@@ -16,7 +24,28 @@ import styles from "./AboutSection.module.css";
 export default function AboutSection() {
   const aboutRef = useRef(null);
   const { isDark } = useTheme();
-  const { links, from } = useGSAP();
+  const iconStyles = {
+    width: "150px",
+    height: "150px",
+  };
+  const renderTechStack = [
+    <MongoDB key="MongoDB Icon" alt="MongoDB Icon" {...iconStyles} />,
+    <NextJS key="NextJS Icon" alt="NextJS Icon" {...iconStyles} />,
+    <NodeJS key="NodeJS Icon" alt="NodeJS Icon" {...iconStyles} />,
+    <Postman key="Postman Icon" alt="Postman Icon" {...iconStyles} />,
+    <ReactJS key="ReactJS Icon" alt="ReactJS Icon" {...iconStyles} />,
+    <TypeScript key="TypeScript Icon" alt="TypeScript Icon" {...iconStyles} />,
+  ].map((icon, i) => (
+    <div
+      style={{
+        display: "inline-block",
+        marginRight: "1rem",
+      }}
+      key={i}
+    >
+      {icon}
+    </div>
+  ));
 
   return (
     <section id="about" className={styles.root} ref={aboutRef}>
@@ -53,7 +82,9 @@ export default function AboutSection() {
         <div className={styles.aboutInfo}></div>
       </div>
 
-      <MoveStuffAround />
+      {/* <TechGuru /> */}
+
+      <Marquee>{renderTechStack}</Marquee>
     </section>
   );
 }
