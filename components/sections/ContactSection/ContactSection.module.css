@@ -1,4 +1,18 @@
 .root {
-  height: 100vh;
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   border-bottom: 1px solid white;
+}
+
+.contactForm {
+  width: 50%;
+  height: 45vh;
+  border: 1px solid red;
+}
+
+.globeContainer {
+  width: 50%;
 }

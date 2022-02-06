@@ -1,41 +1,56 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useMemo } from "react";
+import dynamic from "next/dynamic";
+const Globe = dynamic(import("react-globe.gl"), { ssr: false });
+import { useTheme } from "store/theme-context";
 import { useGSAP } from "store/GSAP-context";
+import { EARTH_IMAGE } from "helpers/paths";
 // import { setActive } from "helpers/functions";
 
 import styles from "./ContactSection.module.css";
 
-export default function ContactSection() {
-  const contactRef = useRef(null);
-  const { links, timeline, from, to } = useGSAP();
+export default function ContactSection({ clientIP }) {
+  const globeRef = useRef();
+  const { isDark } = useTheme();
+  const MAP_CENTER = { lat: 37.6, lng: -16.6, altitude: 0.4 };
+  const arcsData = [
+    {
+      startLat: -8.00937,
+      startLng: -34.8553,
+      endLat: 40.73061,
+      endLng: -73.935242,
+      // color: [
+      //   ["red", "white", "blue", "green"][Math.round(Math.random() * 3)],
+      //   ["red", "white", "blue", "green"][Math.round(Math.random() * 3)],
+      // ],
+    },
+  ];
 
-  // useEffect(() => {
-  //   const tl = timeline({
-  //     scrollTrigger: {
-  //       trigger: contactRef.current,
-  //       scrub: true,
-  //       pin: true,
-  //       start: "top top",
-  //       end: "+=100%",
-  //     },
-  //   });
+  console.log(clientIP);
 
-  //   tl.from(contactRef.current, {
-  //     scale: 0.3,
-  //     rotation: 45,
-  //     autoAlpha: 0,
-  //     ease: "power2",
-  //   })
-  //     .from(
-  //       contactRef.current,
-  //       { scaleX: 0, transformOrigin: "left center", ease: "none" },
-  //       0
-  //     )
-  //     .to(contactRef.current, { backgroundColor: "#28a92b" }, 0);
-  // }, [timeline]);
+  // useEffect(() => globeRef.current.pointOfView(MAP_CENTER, 4000));
 
   return (
-    <section id="contact" className={styles.root} ref={contactRef}>
-      CONTACT SECTION
+    <section id="contact" className={styles.root}>
+      <div className={styles.contactForm}></div>
+      <div id="globeViz" className={styles.globeContainer}>
+        <Globe
+          ref={globeRef}
+          width={600}
+          height={600}
+          atmosphereAltitude={0.3}
+          backgroundColor={isDark ? "#000000" : "#FFFFFF"}
+          globeImageUrl={EARTH_IMAGE}
+          arcsData={arcsData}
+          arcLabel={() => "We are now connected!"}
+          arcDashLength={0.4}
+          arcDashGap={0.2}
+          arcDashAnimateTime={3000}
+          pointColor={() => "orange"}
+          pointAltitude={0}
+          pointRadius={0.04}
+          pointsMerge={true}
+        />
+      </div>
     </section>
   );
 }

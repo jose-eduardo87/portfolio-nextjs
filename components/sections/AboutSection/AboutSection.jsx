@@ -7,7 +7,7 @@ import {
   NodeJS,
   Postman,
   ReactJS,
-  // TechGuru,
+  TechGuru,
   TypeScript,
 } from "@/components/icons";
 import {

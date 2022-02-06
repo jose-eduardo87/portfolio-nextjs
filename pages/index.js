@@ -11,7 +11,7 @@ import { useGSAP } from "store/GSAP-context";
 
 Portfolio.Layout = Layout;
 
-export default function Portfolio() {
+export default function Portfolio({ ip }) {
   // const { register } = useGSAP();
   // register(); // METHOD RESPONSIBLE FOR REGISTERING ScrollTrigger and ScrollToPlugin
 
@@ -28,8 +28,21 @@ export default function Portfolio() {
       <Container>
         <AboutSection />
         <WorkSection />
-        <ContactSection />
+        <ContactSection clientIP={ip} />
       </Container>
     </>
   );
+}
+
+export async function getServerSideProps({ req }) {
+  const forwarded = req.headers["x-forwarded-for"];
+
+  const ip = forwarded
+    ? forwarded.split(/, /)[0]
+    : req.connection.remoteAddress;
+  return {
+    props: {
+      ip,
+    },
+  };
 }
