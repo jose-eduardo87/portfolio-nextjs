@@ -2,48 +2,52 @@ import { forwardRef, useEffect } from "react";
 // import dynamic from "next/dynamic";
 // const Globe = dynamic(import("react-globe.gl"), { ssr: false });
 let Globe = () => null;
-if (typeof window !== "undefined") Globe = require("react-globe.gl").default;
+if (typeof window !== "undefined") {
+  Globe = require("react-globe.gl").default;
+}
 import { useTheme } from "store/theme-context";
 import { EARTH_IMAGE } from "helpers/paths";
+import { getMiddlePointBetweenTwoLocations } from "helpers/functions";
 
-const GlobeWrapper = forwardRef((props, ref) => {
-  const { isDark, currentBGHex } = useTheme();
+const GlobeWrapper = forwardRef(({ endLat, endLng }, ref) => {
+  const { currentBGHex } = useTheme();
   const arcsData = [
     {
       startLat: -8.00937,
-      startLng: -34.8553,
-      endLat: -31.953512,
-      endLng: 115.857048,
+      startLng: -34.8687,
+      endLat,
+      endLng,
     },
   ];
 
   useEffect(() => {
+    const [lat, lng] = getMiddlePointBetweenTwoLocations(
+      -8.00937,
+      -34.8687,
+      endLat,
+      endLng
+    );
     const MAP_CENTER = {
-      lat: -54.117061569302734,
-      lng: 24.044779284317865,
-      altitude: 2.6,
+      lat,
+      lng,
+      altitude: 2.2,
     };
 
     ref.current.pointOfView(MAP_CENTER, 4000);
-  }, [ref]);
+  }, [ref, endLat, endLng]);
 
   return (
     <Globe
       ref={ref}
-      width={600}
-      height={600}
+      width={550}
+      height={550}
       atmosphereAltitude={0.3}
       backgroundColor={currentBGHex || "#000000"}
       globeImageUrl={EARTH_IMAGE}
       arcsData={arcsData}
-      // arcLabel={() => "We are now connected!"}
       arcDashLength={0.4}
-      arcDashGap={0.4}
+      arcDashGap={1}
       arcDashAnimateTime={3000}
-      pointColor={() => "orange"}
-      pointAltitude={0}
-      pointRadius={0.04}
-      pointsMerge={true}
     />
   );
 });

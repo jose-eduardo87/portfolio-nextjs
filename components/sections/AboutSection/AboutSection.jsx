@@ -7,7 +7,6 @@ import {
   NodeJS,
   Postman,
   ReactJS,
-  TechGuru,
   TypeScript,
 } from "@/components/icons";
 import {
@@ -18,13 +17,12 @@ import {
 } from "react-icons/fa";
 import { PROFILE_PHOTO } from "helpers/paths";
 import { useGSAP } from "store/GSAP-context";
-import { useTheme } from "store/theme-context";
 
 import styles from "./AboutSection.module.css";
 
 export default function AboutSection() {
   const aboutRef = useRef(null);
-  const { isDark } = useTheme();
+  const { fromTo } = useGSAP();
   const iconStyles = {
     width: "150px",
     height: "150px",
@@ -48,11 +46,21 @@ export default function AboutSection() {
     </div>
   ));
 
+  useEffect(() => {
+    const aboutElement = aboutRef.current;
+
+    fromTo(
+      aboutElement.querySelector(".picSelector"),
+      { y: -50 },
+      { y: 0, duration: 10 }
+    );
+  }, [fromTo]);
+
   return (
     <section id="about" className={styles.root} ref={aboutRef}>
       <div className={styles.mainPanel}>
         <div className={styles.profile}>
-          <div className={styles.photo}>
+          <div className={`picSelector ${styles.photo}`}>
             <Image
               alt="Profile image"
               src={PROFILE_PHOTO}
@@ -109,7 +117,7 @@ export default function AboutSection() {
           </p>
         </div>
       </div>
-
+      <h2>Technologies I am currently working with:</h2>
       <Marquee>{renderTechStack}</Marquee>
     </section>
   );

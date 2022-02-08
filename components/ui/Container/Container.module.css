@@ -6,3 +6,7 @@
 .container section {
   margin-top: 8rem;
 }
+
+.container section:last-child {
+  margin-bottom: 4rem;
+}

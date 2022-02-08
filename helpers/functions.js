@@ -1,21 +1,7 @@
-export function setActive(links, index) {
-  links.forEach((el) => el.classList.remove("active"));
-
-  links[index].classList.add("active");
-}
-
-export function setSection(newSection, currentSection) {
-  if (newSection !== currentSection) {
-    gsap.to(currentSection, { scale: 0.8, autoAlpha: 0 });
-    gsap.to(newSection, { scale: 1, autoAlpha: 1 });
-    currentSection = newSection;
-  }
-}
-
 const convertToRadians = (value) => (value * Math.PI) / 180;
 const convertToDegrees = (value) => value * (180 / Math.PI);
 
-export function middlePointBetweenTwoLocations(lat1, lng1, lat2, lng2) {
+export function getMiddlePointBetweenTwoLocations(lat1, lng1, lat2, lng2) {
   // gets the longitude difference and converts to radians
   var dLng = convertToRadians(lng2 - lng1);
 
@@ -32,5 +18,5 @@ export function middlePointBetweenTwoLocations(lat1, lng1, lat2, lng2) {
   );
   var lng3 = lng1Rad + Math.atan2(bY, Math.cos(lat1Rad) + bX);
 
-  return [convertToDegrees(lng3), convertToDegrees(lat3)];
+  return [convertToDegrees(lat3), convertToDegrees(lng3)];
 }

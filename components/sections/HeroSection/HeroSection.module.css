@@ -1,8 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
 
 .root {
   height: 90vh;
   overflow: hidden;
+  margin-bottom: 2rem;
 }
 
 .heroContent {
@@ -10,11 +11,11 @@
   top: 50%;
   right: 50%;
   transform: translate(50%, -50%);
+  font-family: "Raleway", sans-serif;
 }
 
 .heroContent h1 {
   letter-spacing: 1px;
-  font-family: "Roboto";
   font-size: 5rem;
   font-weight: 100;
   text-align: justify;
