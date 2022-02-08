@@ -16,6 +16,7 @@ import {
   FaLinkedinIn,
   FaTwitterSquare,
 } from "react-icons/fa";
+import { PROFILE_PHOTO } from "helpers/paths";
 import { useGSAP } from "store/GSAP-context";
 import { useTheme } from "store/theme-context";
 
@@ -51,7 +52,16 @@ export default function AboutSection() {
     <section id="about" className={styles.root} ref={aboutRef}>
       <div className={styles.mainPanel}>
         <div className={styles.profile}>
-          <div className={styles.photo}></div>
+          <div className={styles.photo}>
+            <Image
+              alt="Profile image"
+              src={PROFILE_PHOTO}
+              width={250}
+              height={250}
+              layout="responsive"
+              quality={80}
+            />
+          </div>
           <div className={styles.social}>
             <a
               target="_blank"
@@ -79,10 +89,26 @@ export default function AboutSection() {
             </a>
           </div>
         </div>
-        <div className={styles.aboutInfo}></div>
-      </div>
+        <div className={styles.aboutInfo}>
+          <h1>Lorem ipsum dolor sit amet.</h1>
 
-      {/* <TechGuru /> */}
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde odit
+            saepe deserunt atque obcaecati voluptatum, quasi consequuntur sit
+            porro neque reprehenderit laboriosam animi quas impedit.
+          </p>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde odit
+            saepe deserunt atque obcaecati voluptatum, quasi consequuntur sit
+            porro neque reprehenderit laboriosam animi quas impedit.
+          </p>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde odit
+            saepe deserunt atque obcaecati voluptatum, quasi consequuntur sit
+            porro neque reprehenderit laboriosam animi quas impedit.
+          </p>
+        </div>
+      </div>
 
       <Marquee>{renderTechStack}</Marquee>
     </section>
