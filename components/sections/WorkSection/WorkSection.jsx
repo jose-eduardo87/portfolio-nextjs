@@ -1,35 +1,52 @@
 import { useRef, useEffect } from "react";
-import { useGSAP } from "store/GSAP-context";
-import { setActive } from "helpers/functions";
+import { Card } from "@/components/ui";
+// import { useGSAP } from "store/GSAP-context";
 
 import styles from "./WorkSection.module.css";
 
 export default function WorkSection() {
   const workRef = useRef(null);
-  const { links, from } = useGSAP();
-
-  // useEffect(() => {
-  //   if (links.length > 0) {
-  //     from(workRef.current, {
-  //       scrollTrigger: {
-  //         trigger: workRef.current,
-  //         scrub: true,
-  //         pin: true,
-  //         start: "top top",
-  //         end: "+=100%",
-  //         onEnter: () => setActive(links, 1),
-  //         onEnterBack: () => setActive(links, 1),
-  //       },
-  //       scaleX: 0,
-  //       transformOrigin: "left center",
-  //       ease: "none",
-  //     });
-  //   }
-  // }, [links, from]);
+  const WORK = [
+    {
+      title: "Portfolio",
+      description:
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum, quidem? Expedita, natus. Ad, voluptatibus tenetur.",
+      // image: IMG_PATH,
+      githubLink: "",
+      liveLink: "",
+    },
+    {
+      title: "Vanila e-commerce application",
+      description:
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum, quidem? Expedita, natus. Ad, voluptatibus tenetur.",
+      // image: IMG_PATH,
+      githubLink: "",
+      liveLink: "",
+    },
+    {
+      title: "Apollo Quay Resort",
+      description:
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum, quidem? Expedita, natus. Ad, voluptatibus tenetur.",
+      // image: IMG_PATH,
+      githubLink: "",
+      liveLink: "",
+    },
+  ];
+  const renderWork = WORK.map(
+    ({ title, description, githubLink, liveLink }, key) => (
+      <Card
+        key={key}
+        title={title}
+        description={description}
+        githubLink={githubLink}
+        liveLink={liveLink}
+      />
+    )
+  );
 
   return (
     <section id="work" className={styles.root} ref={workRef}>
-      WORK SECTION
+      <div className={styles.workContainer}>{renderWork}</div>
     </section>
   );
 }

@@ -1,3 +1,33 @@
+.root {
+  width: 90%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid red;
+  margin-bottom: 4px;
+}
+
+.root:first-child {
+  width: 50%;
+}
+
+.presentationGroup {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
 .img {
-  /* background-color: #eeeeee50; */
+  display: inline-block;
+  width: 250px;
+  height: 250px;
+  border: 1px solid red;
+}
+
+.title {
+  position: absolute;
+  right: 30%;
 }

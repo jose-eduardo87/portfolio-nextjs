@@ -4,6 +4,7 @@ import styles from "./Footer.module.css";
 
 export default function Footer() {
   const { isEnglish } = useLanguage();
+
   return (
     <footer className={styles.root}>
       <p>

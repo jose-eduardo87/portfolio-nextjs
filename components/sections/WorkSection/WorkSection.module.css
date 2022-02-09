@@ -1,4 +1,9 @@
 .root {
-  height: 100vh;
+  /* height: 100vh; */
   border-bottom: 1px solid white;
+}
+
+.workContainer {
+  /* height: 800px;
+  overflow: auto; */
 }
