@@ -2,6 +2,7 @@ import { useRef, useEffect } from "react";
 import { Typewriter } from "react-simple-typewriter";
 import { HERO_VIDEO } from "helpers/paths";
 import { useTheme } from "store/theme-context";
+import { useLanguage } from "store/language-context";
 import { useGSAP } from "store/GSAP-context";
 
 import styles from "./HeroSection.module.css";
@@ -9,7 +10,22 @@ import styles from "./HeroSection.module.css";
 export default function HeroSection() {
   const sectionRef = useRef(null);
   const { isDark } = useTheme();
+  const { isEnglish } = useLanguage();
   const { fromTo } = useGSAP();
+  const renderHeading = isEnglish ? (
+    <h1 className="headingHero">
+      Hello there. <br />
+      My name is Eduardo.
+    </h1>
+  ) : (
+    <h1 className="headingHero">
+      Olá. <br />
+      Meu nome é Eduardo.
+    </h1>
+  );
+  const renderWords = isEnglish
+    ? ["amazing websites.", "test1", "test2", "thoughts into code."]
+    : ["websites incríveis", "teste1", "teste2", "ideias em códigos"];
 
   useEffect(() => {
     const sectionElement = sectionRef.current;
@@ -37,23 +53,15 @@ export default function HeroSection() {
         <source src={HERO_VIDEO} type="video/mp4" />
       </video>
       <div className={styles.heroContent}>
-        <h1 className="headingHero">
-          Hello there. <br />
-          My name is Eduardo.
-        </h1>
+        {renderHeading}
         <p className="paragraph">
-          I develop{" "}
+          {isEnglish ? "I develop" : "Eu desenvolvo"}{" "}
           <span>
             <Typewriter
-              words={[
-                "amazing websites.",
-                "test1",
-                "test2",
-                "thoughts into code.",
-              ]}
+              words={renderWords}
               loop={5}
               cursor
-              cursorStyle={"l"}
+              cursorStyle={"I"}
               typeSpeed={90}
               deleteSpeed={70}
               delaySpeed={1000}

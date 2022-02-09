@@ -38,6 +38,7 @@ export default function ThemeWrapper({ children }) {
 
       return;
     }
+
     setCurrentBGHex(
       LIGHT_BG[Math.round(Math.random() * (LIGHT_BG.length - 1))]
     );

@@ -3,7 +3,7 @@ import { Input } from "@/components/Input";
 
 import styles from "./Form.module.css";
 
-export default function Form() {
+export default function Form({ isEnglish }) {
   const nameInputRef = createRef();
   const emailInputRef = createRef();
   const messageInputRef = createRef();
@@ -16,11 +16,21 @@ export default function Form() {
 
   return (
     <form className={styles.root} onSubmit={formHandler}>
-      <Input type="text" placeholder="Your name" required ref={nameInputRef} />
+      <Input
+        type="text"
+        placeholder={isEnglish ? "Your name" : "Seu nome"}
+        required
+        ref={nameInputRef}
+      />
       <Input type="email" placeholder="E-mail" required ref={emailInputRef} />
-      <Input textarea placeholder="Message" required ref={messageInputRef} />
+      <Input
+        textarea
+        placeholder={isEnglish ? "Message" : "Mensagem"}
+        required
+        ref={messageInputRef}
+      />
 
-      <button>Send message!</button>
+      <button>{isEnglish ? "Send message!" : "Enviar mensagem!"}</button>
     </form>
   );
 }
