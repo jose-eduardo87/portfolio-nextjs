@@ -26,7 +26,9 @@ import styles from "./AboutSection.module.css";
 export default function AboutSection() {
   const aboutRef = useRef(null);
   const { isEnglish } = useLanguage();
-  const { fromTo } = useGSAP();
+  const { register, utils, fromTo } = useGSAP();
+  const { selector } = utils();
+  const queryAbout = selector(aboutRef);
   const iconStyles = {
     width: "150px",
     height: "150px",
@@ -57,15 +59,21 @@ export default function AboutSection() {
     <h2>Tecnologias que trabalho atualmente:</h2>
   );
 
-  useEffect(() => {
-    const aboutElement = aboutRef.current;
+  register();
 
-    fromTo(
-      aboutElement.querySelector(".picSelector"),
-      { y: -50 },
-      { y: 0, duration: 10 }
-    );
-  }, [fromTo]);
+  useEffect(() => {
+    fromTo(queryAbout(".picSelector"), { y: -50 }, { y: 0, duration: 10 });
+  }, [fromTo, queryAbout]);
+
+  useEffect(() => {
+    Array.from({ length: 4 }).map((_, index) => {
+      fromTo(
+        queryAbout(`.iconSelector-${index}`),
+        { opacity: 0, transform: "scale(0.2)" },
+        { opacity: 1, transform: "scale(1)", delay: index * 1 }
+      );
+    });
+  }, [fromTo, queryAbout]);
 
   return (
     <section id="about" className={styles.root} ref={aboutRef}>
@@ -75,8 +83,8 @@ export default function AboutSection() {
             <Image
               alt="Profile image"
               src={PROFILE_PHOTO}
-              width={300}
-              height={250}
+              width={400}
+              height={300}
               layout="responsive"
               quality={80}
             />
@@ -88,7 +96,7 @@ export default function AboutSection() {
               rel="noopener noreferrer"
             >
               <FaFacebookSquare
-                className={`${styles.icon} ${styles.facebookIcon}`}
+                className={`iconSelector-0 ${styles.icon} ${styles.facebookIcon}`}
               />
             </a>
             <a
@@ -97,7 +105,7 @@ export default function AboutSection() {
               rel="noopener noreferrer"
             >
               <FaGithubSquare
-                className={`${styles.icon} ${styles.githubIcon}`}
+                className={`iconSelector-1 ${styles.icon} ${styles.githubIcon}`}
               />
             </a>
             <a
@@ -106,7 +114,7 @@ export default function AboutSection() {
               rel="noopener noreferrer"
             >
               <FaLinkedinIn
-                className={`${styles.icon} ${styles.linkedInIcon}`}
+                className={`iconSelector-2 ${styles.icon} ${styles.linkedInIcon}`}
               />
             </a>
             <a
@@ -115,7 +123,7 @@ export default function AboutSection() {
               rel="noopener noreferrer"
             >
               <FaTwitterSquare
-                className={`${styles.icon} ${styles.twitterIcon}`}
+                className={`iconSelector-3 ${styles.icon} ${styles.twitterIcon}`}
               />
             </a>
           </div>

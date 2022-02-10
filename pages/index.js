@@ -12,9 +12,6 @@ import { useGSAP } from "store/GSAP-context";
 Portfolio.Layout = Layout;
 
 export default function Portfolio({ ip }) {
-  // const { register } = useGSAP();
-  // register(); // METHOD RESPONSIBLE FOR REGISTERING ScrollTrigger and ScrollToPlugin
-
   return (
     <>
       <Head>

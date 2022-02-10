@@ -5,23 +5,6 @@ import { PROFILE_PHOTO } from "helpers/paths";
 import styles from "./Card.module.css";
 
 export default function Card({ title, description, githubLink, liveLink }) {
-  // return (
-  //   <div className={styles.root}>
-  //     <div className={styles.topRow}>
-  //       <div className={styles.image}></div>
-  //       <div className={styles.presentationGroup}>
-  //         <h1 className={styles.title}>{title}</h1>
-  //         <p className={styles.description}>{description}</p>
-  //       </div>
-  //     </div>
-  //     <div className={styles.bottomRow}>
-  //       <div className={styles.buttonsGroup}>
-  //         <Button>github</Button>
-  //         <Button>live</Button>
-  //       </div>
-  //     </div>
-  //   </div>
-  // );
   return (
     <div className={styles.root}>
       <div className={styles.topRow}>
@@ -32,7 +15,7 @@ export default function Card({ title, description, githubLink, liveLink }) {
         </div>
       </div>
       <div className={styles.bottomRow}>
-        <Button>github</Button>
+        <Button style={{ backgroundColor: "red" }}>github</Button>
         <Button>live</Button>
       </div>
     </div>

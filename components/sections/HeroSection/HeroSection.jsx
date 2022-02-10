@@ -11,7 +11,9 @@ export default function HeroSection() {
   const sectionRef = useRef(null);
   const { isDark } = useTheme();
   const { isEnglish } = useLanguage();
-  const { fromTo } = useGSAP();
+  const { utils, fromTo } = useGSAP();
+  const { selector } = utils();
+  const queryHero = selector(sectionRef);
   const renderHeading = isEnglish ? (
     <h1 className="headingHero">
       Hello there. <br />
@@ -28,24 +30,20 @@ export default function HeroSection() {
     : ["websites incríveis", "teste1", "teste2", "ideias em códigos"];
 
   useEffect(() => {
-    const sectionElement = sectionRef.current;
-
     fromTo(
-      sectionElement.querySelector(".headingHero"),
+      queryHero(".headingHero"),
       { opacity: 0, x: -20 },
       { opacity: 1, x: 0, duration: 3 }
     );
-  }, [fromTo]);
+  }, [fromTo, queryHero]);
 
   useEffect(() => {
-    const sectionElement = sectionRef.current;
-
     fromTo(
-      sectionElement.querySelector(".paragraph"),
+      queryHero(".paragraph"),
       { opacity: 0, y: -15 },
       { opacity: 1, y: 0, duration: 1, delay: 2 }
     );
-  }, [fromTo]);
+  }, [fromTo, queryHero]);
 
   return (
     <section className={styles.root} ref={sectionRef}>
@@ -59,7 +57,7 @@ export default function HeroSection() {
           <span>
             <Typewriter
               words={renderWords}
-              loop={5}
+              loop={false}
               cursor
               cursorStyle={"I"}
               typeSpeed={90}

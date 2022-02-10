@@ -1,3 +1,12 @@
+@font-face {
+  font-family: "ComicsCarToon";
+  font-style: normal;
+  /* font-weight: 400; */
+  /* font-display: swap; */
+  src: local("ComicsCarToon"),
+    url(/static/fonts/ComicsCarToon.tff) format("tff");
+}
+
 .root {
   /* height: 100vh; */
   position: relative;
@@ -10,15 +19,31 @@
 
 .vintageMan {
   position: absolute;
-  top: 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0;
   right: 0;
 }
 
-.tooltip {
-  background-color: #ffffff;
+.hoverInfo {
+  text-align: center;
 }
 
-.tooltip-hidden {
-  visibility: hidden;
-  pointer-events: none;
+.tooltip {
+  max-width: fit-content;
+}
+
+.tooltipMessage {
+  font-family: "ComicsCarToon";
+  font-weight: 100;
+}
+
+.vintageMan p {
+  text-align: center;
+  font-weight: 800;
+  padding: 8px;
+  min-width: 100%;
+  transform: skew(-25deg);
 }

@@ -7,6 +7,7 @@ const GSAPContext = createContext({
   sections: [],
   getSections: (DOMElement) => {},
   register: () => {},
+  utils: () => {},
   to: () => {},
   from: (DOMElement, options) => {},
   fromTo: (DOMElement, optionsFrom, optionsTo) => {},
@@ -22,6 +23,7 @@ export default function GSAPProvider({ children }) {
       []
     ),
     register: useCallback(() => GSAPInstance.register(), []),
+    utils: useCallback(() => GSAPInstance.utils(), []),
     to: useCallback(
       (DOMElement, options, position = null) =>
         GSAPInstance.to(DOMElement, options, position),

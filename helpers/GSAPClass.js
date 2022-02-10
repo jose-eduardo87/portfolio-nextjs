@@ -1,12 +1,16 @@
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
+// import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 
 class GSAP {
   constructor() {}
 
   register() {
-    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+    gsap.registerPlugin(ScrollTrigger);
+  }
+
+  utils() {
+    return { selector: gsap.utils.selector };
   }
 
   getSections(DOMNodeList) {
