@@ -1,0 +1,9 @@
+.root {
+  border: none;
+  width: 180px;
+  height: 60px;
+  cursor: pointer;
+  outline: none;
+  font-size: inherit;
+  background-color: blue;
+}

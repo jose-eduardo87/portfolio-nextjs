@@ -1,5 +1,6 @@
 import { createRef } from "react";
 import { Input } from "@/components/Input";
+import { Button } from "@/components/ui";
 
 import styles from "./Form.module.css";
 
@@ -30,7 +31,7 @@ export default function Form({ isEnglish }) {
         ref={messageInputRef}
       />
 
-      <button>{isEnglish ? "Send message!" : "Enviar mensagem!"}</button>
+      <Button>{isEnglish ? "Send message!" : "Enviar mensagem!"}</Button>
     </form>
   );
 }

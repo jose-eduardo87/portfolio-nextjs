@@ -1,9 +1,24 @@
 .root {
   /* height: 100vh; */
+  position: relative;
   border-bottom: 1px solid white;
 }
 
-.workContainer {
-  /* height: 800px;
-  overflow: auto; */
+.root div:first-of-type {
+  width: 60%;
+}
+
+.vintageMan {
+  position: absolute;
+  top: 2%;
+  right: 0;
+}
+
+.tooltip {
+  background-color: #ffffff;
+}
+
+.tooltip-hidden {
+  visibility: hidden;
+  pointer-events: none;
 }

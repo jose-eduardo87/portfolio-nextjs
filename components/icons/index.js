@@ -9,3 +9,4 @@ export { default as ReactJS } from "./ReactJS";
 export { default as TechGuru } from "./TechGuru";
 export { default as TypeScript } from "./TypeScript";
 export { default as USAFlag } from "./USAFlag";
+export { default as VintageMan } from "./VintageMan";

@@ -1,37 +1,23 @@
 import { useRef, useEffect } from "react";
+import Image from "next/image";
+import { usePopper } from "react-popper";
 import { Card } from "@/components/ui";
+import { VintageMan } from "@/components/icons";
+import { WORK } from "helpers/paths";
 // import { useGSAP } from "store/GSAP-context";
 
 import styles from "./WorkSection.module.css";
 
 export default function WorkSection() {
   const workRef = useRef(null);
-  const WORK = [
-    {
-      title: "Portfolio",
-      description:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum, quidem? Expedita, natus. Ad, voluptatibus tenetur.",
-      // image: IMG_PATH,
-      githubLink: "",
-      liveLink: "",
-    },
-    {
-      title: "Vanila e-commerce application",
-      description:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum, quidem? Expedita, natus. Ad, voluptatibus tenetur.",
-      // image: IMG_PATH,
-      githubLink: "",
-      liveLink: "",
-    },
-    {
-      title: "Apollo Quay Resort",
-      description:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum, quidem? Expedita, natus. Ad, voluptatibus tenetur.",
-      // image: IMG_PATH,
-      githubLink: "",
-      liveLink: "",
-    },
-  ];
+  // const vintageDudeRef = useRef();
+  // const tooltipRef = useRef(null);
+  // const { styles, attributes } = usePopper(
+  //   vintageDudeRef.current,
+  //   tooltipRef.current,
+  //   { placement: "bottom" }
+  // );
+
   const renderWork = WORK.map(
     ({ title, description, githubLink, liveLink }, key) => (
       <Card
@@ -46,7 +32,17 @@ export default function WorkSection() {
 
   return (
     <section id="work" className={styles.root} ref={workRef}>
-      <div className={styles.workContainer}>{renderWork}</div>
+      {/* <span
+        style={styles.popper}
+        className={styles.tooltip}
+        {...attributes.popper}
+      >
+        This is the tooltip.
+      </span> */}
+      <span className={styles.vintageMan}>
+        <VintageMan width={240} height={252} />
+      </span>
+      {renderWork}
     </section>
   );
 }
