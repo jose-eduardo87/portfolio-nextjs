@@ -18,7 +18,6 @@ export default function WorkSection() {
   const queryWork = gsap.utils.selector(workRef);
   const { isDark } = useTheme();
   const { isEnglish } = useLanguage();
-
   const renderWork = WORK.map(
     ({ title, description, githubLink, liveLink }, key) => (
       <Card
@@ -43,7 +42,7 @@ export default function WorkSection() {
         x = 100;
         y = 0;
       }
-      element.style.transform = "translate(" + x + "px, " + y + "px)";
+      element.style.transform = `translate(${x}px, ${y}px)`;
       element.style.opacity = "0";
       gsap.fromTo(
         element,
@@ -62,22 +61,18 @@ export default function WorkSection() {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    queryWork(".cardSelector").forEach(function (element) {
+    queryWork(".cardSelector").forEach((element) => {
       hide(element);
 
       ScrollTrigger.create({
         trigger: element,
-        onEnter: function () {
-          animateFrom(element);
-        },
-        onEnterBack: function () {
-          animateFrom(element, -1);
-        },
-        onLeave: function () {
-          hide(element);
-        },
+        onEnter: () => animateFrom(element),
+        onEnterBack: () => animateFrom(element, -1),
+        onLeave: () => hide(element),
       });
     });
+
+    () => ScrollTrigger.getAll().forEach((t) => t.kill());
   }, [queryWork]);
 
   return (

@@ -1,6 +1,7 @@
 import { useRef, useEffect } from "react";
 import Image from "next/image";
 import { gsap } from "gsap/dist/gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { Marquee } from "@/components/ui/";
 import {
   Git,
@@ -58,24 +59,41 @@ export default function AboutSection() {
   );
 
   useEffect(() => {
-    const animatePhoto = gsap.fromTo(
-      queryAbout(".picSelector"),
-      { y: -50 },
-      { y: 0, duration: 10 }
-    );
+    const animatePhotoOnEnter = (icon) => {
+      gsap.fromTo(icon, { y: -50 }, { y: 0, duration: 4 });
+    };
 
-    return () => animatePhoto.kill();
+    gsap.registerPlugin(ScrollTrigger);
+
+    queryAbout(".picSelector").forEach((photo) => {
+      ScrollTrigger.create({
+        trigger: photo,
+        onEnter: () => animatePhotoOnEnter(photo),
+      });
+    });
+
+    () => ScrollTrigger.getAll().forEach((t) => t.kill());
   }, [queryAbout]);
 
   useEffect(() => {
-    // I MAY BE WRONG, BUT APPARENTLY USING .gsap.utils.toArray() IS THE STANDARD WAY OF DOING THIS. STILL NEED TO FIGURE OUT HOW TO USE IT WITH REACT
-    Array.from({ length: 4 }).map((_, index) => {
+    const animateIconOnEnter = (icon, index) => {
       gsap.fromTo(
-        queryAbout(`.iconSelector-${index}`),
+        icon,
         { opacity: 0, transform: "scale(0.2)" },
         { opacity: 1, transform: "scale(1)", delay: index * 1 }
       );
+    };
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    queryAbout(".iconSelector").forEach((icon, index) => {
+      ScrollTrigger.create({
+        trigger: icon,
+        onEnter: () => animateIconOnEnter(icon, index),
+      });
     });
+
+    () => ScrollTrigger.getAll().forEach((t) => t.kill());
   }, [queryAbout]);
 
   return (

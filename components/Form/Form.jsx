@@ -4,7 +4,7 @@ import { Button } from "@/components/ui";
 
 import styles from "./Form.module.css";
 
-export default function Form({ isEnglish }) {
+const Form = ({ isEnglish }) => {
   const nameInputRef = createRef();
   const emailInputRef = createRef();
   const messageInputRef = createRef();
@@ -16,7 +16,7 @@ export default function Form({ isEnglish }) {
   };
 
   return (
-    <form className={styles.root} onSubmit={formHandler}>
+    <form className={`formSelector ${styles.root}`} onSubmit={formHandler}>
       <Input
         type="text"
         placeholder={isEnglish ? "Your name" : "Seu nome"}
@@ -34,4 +34,8 @@ export default function Form({ isEnglish }) {
       <Button>{isEnglish ? "Send message!" : "Enviar mensagem!"}</Button>
     </form>
   );
-}
+};
+
+Form.displayName = "Form";
+
+export default Form;
