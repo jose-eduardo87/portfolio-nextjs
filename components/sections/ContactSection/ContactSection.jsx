@@ -1,6 +1,4 @@
 import { createRef, useEffect, useState } from "react";
-// import dynamic from "next/dynamic";
-// const Globe = dynamic(import("react-globe.gl"), { ssr: false });
 import { GlobeWrapper } from "@/components/GlobeWrapper";
 import { Form } from "@/components/Form";
 import { useLanguage } from "store/language-context";

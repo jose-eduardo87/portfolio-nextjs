@@ -1,5 +1,6 @@
 import { useRef, useEffect } from "react";
 import Image from "next/image";
+import { gsap } from "gsap/dist/gsap";
 import { Marquee } from "@/components/ui/";
 import {
   Git,
@@ -19,16 +20,13 @@ import {
 } from "react-icons/fa";
 import { PROFILE_PHOTO } from "helpers/paths";
 import { useLanguage } from "store/language-context";
-import { useGSAP } from "store/GSAP-context";
 
 import styles from "./AboutSection.module.css";
 
 export default function AboutSection() {
   const aboutRef = useRef(null);
+  const queryAbout = gsap.utils.selector(aboutRef);
   const { isEnglish } = useLanguage();
-  const { register, utils, fromTo } = useGSAP();
-  const { selector } = utils();
-  const queryAbout = selector(aboutRef);
   const iconStyles = {
     width: "150px",
     height: "150px",
@@ -59,21 +57,26 @@ export default function AboutSection() {
     <h2>Tecnologias que trabalho atualmente:</h2>
   );
 
-  register();
+  useEffect(() => {
+    const animatePhoto = gsap.fromTo(
+      queryAbout(".picSelector"),
+      { y: -50 },
+      { y: 0, duration: 10 }
+    );
+
+    return () => animatePhoto.kill();
+  }, [queryAbout]);
 
   useEffect(() => {
-    fromTo(queryAbout(".picSelector"), { y: -50 }, { y: 0, duration: 10 });
-  }, [fromTo, queryAbout]);
-
-  useEffect(() => {
+    // I MAY BE WRONG, BUT APPARENTLY USING .gsap.utils.toArray() IS THE STANDARD WAY OF DOING THIS. STILL NEED TO FIGURE OUT HOW TO USE IT WITH REACT
     Array.from({ length: 4 }).map((_, index) => {
-      fromTo(
+      gsap.fromTo(
         queryAbout(`.iconSelector-${index}`),
         { opacity: 0, transform: "scale(0.2)" },
         { opacity: 1, transform: "scale(1)", delay: index * 1 }
       );
     });
-  }, [fromTo, queryAbout]);
+  }, [queryAbout]);
 
   return (
     <section id="about" className={styles.root} ref={aboutRef}>
@@ -96,7 +99,7 @@ export default function AboutSection() {
               rel="noopener noreferrer"
             >
               <FaFacebookSquare
-                className={`iconSelector-0 ${styles.icon} ${styles.facebookIcon}`}
+                className={`iconSelector iconSelector-0 ${styles.icon} ${styles.facebookIcon}`}
               />
             </a>
             <a
@@ -105,7 +108,7 @@ export default function AboutSection() {
               rel="noopener noreferrer"
             >
               <FaGithubSquare
-                className={`iconSelector-1 ${styles.icon} ${styles.githubIcon}`}
+                className={`iconSelector iconSelector-1 ${styles.icon} ${styles.githubIcon}`}
               />
             </a>
             <a
@@ -114,7 +117,7 @@ export default function AboutSection() {
               rel="noopener noreferrer"
             >
               <FaLinkedinIn
-                className={`iconSelector-2 ${styles.icon} ${styles.linkedInIcon}`}
+                className={`iconSelector iconSelector-2 ${styles.icon} ${styles.linkedInIcon}`}
               />
             </a>
             <a
@@ -123,7 +126,7 @@ export default function AboutSection() {
               rel="noopener noreferrer"
             >
               <FaTwitterSquare
-                className={`iconSelector-3 ${styles.icon} ${styles.twitterIcon}`}
+                className={`iconSelector iconSelector-3 ${styles.icon} ${styles.twitterIcon}`}
               />
             </a>
           </div>

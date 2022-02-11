@@ -1,19 +1,16 @@
 import { useRef, useEffect } from "react";
+import { gsap } from "gsap/dist/gsap";
 import { Typewriter } from "react-simple-typewriter";
 import { HERO_VIDEO } from "helpers/paths";
 import { useTheme } from "store/theme-context";
 import { useLanguage } from "store/language-context";
-import { useGSAP } from "store/GSAP-context";
 
 import styles from "./HeroSection.module.css";
 
 export default function HeroSection() {
   const sectionRef = useRef(null);
-  const { isDark } = useTheme();
   const { isEnglish } = useLanguage();
-  const { utils, fromTo } = useGSAP();
-  const { selector } = utils();
-  const queryHero = selector(sectionRef);
+  const queryHero = gsap.utils.selector(sectionRef);
   const renderHeading = isEnglish ? (
     <h1 className="headingHero">
       Hello there. <br />
@@ -30,20 +27,20 @@ export default function HeroSection() {
     : ["websites incríveis", "teste1", "teste2", "ideias em códigos"];
 
   useEffect(() => {
-    fromTo(
+    gsap.fromTo(
       queryHero(".headingHero"),
       { opacity: 0, x: -20 },
       { opacity: 1, x: 0, duration: 3 }
     );
-  }, [fromTo, queryHero]);
+  }, [queryHero]);
 
   useEffect(() => {
-    fromTo(
+    gsap.fromTo(
       queryHero(".paragraph"),
       { opacity: 0, y: -15 },
       { opacity: 1, y: 0, duration: 1, delay: 2 }
     );
-  }, [fromTo, queryHero]);
+  }, [queryHero]);
 
   return (
     <section className={styles.root} ref={sectionRef}>

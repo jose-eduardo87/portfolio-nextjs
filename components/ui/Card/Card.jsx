@@ -4,9 +4,15 @@ import { PROFILE_PHOTO } from "helpers/paths";
 
 import styles from "./Card.module.css";
 
-export default function Card({ title, description, githubLink, liveLink }) {
+export default function Card({ i, title, description, githubLink, liveLink }) {
   return (
-    <div className={styles.root}>
+    <div
+      className={
+        i % 2 === 0
+          ? `cardSelector revealFromLeft ${styles.root}`
+          : `cardSelector revealFromRight ${styles.root}`
+      }
+    >
       <div className={styles.topRow}>
         <Image alt="Test photo" src={PROFILE_PHOTO} width={400} height={300} />
         <div className={styles.presentationGroup}>

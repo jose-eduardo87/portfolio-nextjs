@@ -1,14 +1,4 @@
-@font-face {
-  font-family: "ComicsCarToon";
-  font-style: normal;
-  /* font-weight: 400; */
-  /* font-display: swap; */
-  src: local("ComicsCarToon"),
-    url(/static/fonts/ComicsCarToon.tff) format("tff");
-}
-
 .root {
-  /* height: 100vh; */
   position: relative;
   border-bottom: 1px solid white;
 }
@@ -36,11 +26,11 @@
 }
 
 .tooltipMessage {
-  font-family: "ComicsCarToon";
-  font-weight: 100;
+  font-family: BADABOOM, sans-serif;
+  /* font-weight: 800; */
 }
 
-.vintageMan p {
+.hoverMe {
   text-align: center;
   font-weight: 800;
   padding: 8px;

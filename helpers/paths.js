@@ -4,8 +4,6 @@ export const PROFILE_PHOTO = "/static/images/profile.jpg";
 
 export const EARTH_IMAGE = "/static/images/earth.jfif";
 
-export const COMICSCARTOON_FONT = "/static/fonts/ComicsCarToon.ttf";
-
 export const WORK = [
   {
     title: "Portfolio",

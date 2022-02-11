@@ -7,7 +7,6 @@ import {
   ContactSection,
   WorkSection,
 } from "@/components/sections";
-import { useGSAP } from "store/GSAP-context";
 
 Portfolio.Layout = Layout;
 
