@@ -12,22 +12,25 @@ export default function ThemeWrapper({ children }) {
   const toggleMode = () => setIsDark((currentState) => !currentState);
 
   useEffect(() => {
+    document.body.style.transition = ".4s background-color";
+
     const LIGHT_BG = [
-      "#ACDDDE",
-      "#CAF1DE",
-      "#E1F8DC",
-      "#FEF8DD",
-      "#FFE7C7",
-      "#F7D8BA",
+      "#E6BEAE",
+      "#EFE9AE",
+      "#D6E2E9",
+      "#FDE2E4",
+      "#DAB6FC",
+      "#FDC5F5",
     ];
     const DARK_BG = [
-      "#022465",
-      "#011A4B",
-      "#000A32",
-      "#161616",
-      "#400000",
-      "#55417B",
+      "#161B33",
+      "#00296B",
+      "#3C096C",
+      "#212529",
+      "#14213D",
+      "#012A4A",
     ];
+
     if (isDark) {
       setCurrentBGHex(
         DARK_BG[Math.round(Math.random() * (DARK_BG.length - 1))]

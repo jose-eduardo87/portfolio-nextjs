@@ -6,6 +6,11 @@
   border-bottom: 1px solid white;
 }
 
+.root h1 {
+  align-self: flex-start;
+  margin: 0 0 2rem 2rem;
+}
+
 .mainPanel {
   display: flex;
   flex-direction: row;
@@ -33,7 +38,7 @@
 .social {
   display: flex;
   justify-content: space-between;
-  margin-top: 1.4rem;
+  margin-top: -4rem;
   height: 50px;
   width: 250px;
 }
@@ -59,7 +64,7 @@
   fill: #1da1f2;
 }
 
-.root h2 {
+.root h3 {
   margin: 5rem 0 5rem 0;
 }
 

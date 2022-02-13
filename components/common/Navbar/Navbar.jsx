@@ -1,6 +1,6 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { WiDaySunny, WiNightClear } from "react-icons/wi";
-import { BrazilFlag, USAFlag } from "@/components/icons";
 import Toggle from "react-toggle";
 import { useTheme } from "store/theme-context";
 import { useLanguage } from "store/language-context";
@@ -9,18 +9,18 @@ import styles from "./Navbar.module.css";
 import "react-toggle/style.css";
 
 export default function Navbar() {
+  const router = useRouter();
   const { isDark, toggleMode } = useTheme();
   const { isEnglish, toggleLanguage } = useLanguage();
+  const styleActiveLink = {
+    borderBottom: `2px solid ${isDark ? "#FFFFFF" : "#000000"}`,
+    fontWeight: 700,
+  };
   const styleIcons = {
     position: "absolute",
     top: "50%",
     transform: "translateY(-50%)",
     fontSize: "1.5em",
-  };
-  const styleFlags = {
-    position: "absolute",
-    top: "50%",
-    transform: "translateY(-50%)",
   };
 
   return (
@@ -35,13 +35,19 @@ export default function Navbar() {
       </Link>
       <ul>
         <Link passHref href="#about">
-          <li>{isEnglish ? "ABOUT" : "SOBRE"}</li>
+          <li style={router.asPath === "/#about" ? styleActiveLink : {}}>
+            {isEnglish ? "ABOUT" : "SOBRE"}
+          </li>
         </Link>
         <Link passHref href="#work">
-          <li>{isEnglish ? "WORK" : "TRABALHOS"}</li>
+          <li style={router.asPath === "/#work" ? styleActiveLink : {}}>
+            {isEnglish ? "WORK" : "TRABALHOS"}
+          </li>
         </Link>
         <Link passHref href="#contact">
-          <li>{isEnglish ? "CONTACT" : "CONTATO"}</li>
+          <li style={router.asPath === "/#contact" ? styleActiveLink : {}}>
+            {isEnglish ? "CONTACT" : "CONTATO"}
+          </li>
         </Link>
       </ul>
       <label

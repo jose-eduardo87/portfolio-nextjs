@@ -5,16 +5,18 @@ let Globe = () => null;
 if (typeof window !== "undefined") {
   Globe = require("react-globe.gl").default;
 }
-import { useTheme } from "store/theme-context";
 import { EARTH_IMAGE } from "helpers/paths";
 import { getMiddlePointBetweenTwoLocations } from "helpers/functions";
 
 const GlobeWrapper = forwardRef(({ endLat, endLng }, ref) => {
-  const { currentBGHex } = useTheme();
+  const myCoords = {
+    lat: -8.00937,
+    lng: -34.8687,
+  };
   const arcsData = [
     {
-      startLat: -8.00937,
-      startLng: -34.8687,
+      startLat: myCoords.lat,
+      startLng: myCoords.lng,
       endLat,
       endLng,
     },
@@ -22,8 +24,8 @@ const GlobeWrapper = forwardRef(({ endLat, endLng }, ref) => {
 
   useEffect(() => {
     const [lat, lng] = getMiddlePointBetweenTwoLocations(
-      -8.00937,
-      -34.8687,
+      myCoords.lat,
+      myCoords.lng,
       endLat,
       endLng
     );
@@ -34,7 +36,7 @@ const GlobeWrapper = forwardRef(({ endLat, endLng }, ref) => {
     };
 
     ref.current.pointOfView(MAP_CENTER, 4000);
-  }, [ref, endLat, endLng]);
+  }, [ref, myCoords, endLat, endLng]);
 
   return (
     <Globe
@@ -42,7 +44,7 @@ const GlobeWrapper = forwardRef(({ endLat, endLng }, ref) => {
       width={550}
       height={550}
       atmosphereAltitude={0.3}
-      backgroundColor={currentBGHex || "#000000"}
+      backgroundColor={"rgba(0,0,0,0)"}
       globeImageUrl={EARTH_IMAGE}
       arcsData={arcsData}
       arcDashLength={0.4}

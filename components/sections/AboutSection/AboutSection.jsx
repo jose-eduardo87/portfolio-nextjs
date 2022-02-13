@@ -53,9 +53,9 @@ export default function AboutSection() {
     </div>
   ));
   const renderHeading = isEnglish ? (
-    <h2>Technologies I am currently working with:</h2>
+    <h3>Technologies I am currently working with:</h3>
   ) : (
-    <h2>Tecnologias que trabalho atualmente:</h2>
+    <h3>Tecnologias que trabalho atualmente:</h3>
   );
 
   useEffect(() => {
@@ -98,6 +98,7 @@ export default function AboutSection() {
 
   return (
     <section id="about" className={styles.root} ref={aboutRef}>
+      <h1>{isEnglish ? "ABOUT" : "SOBRE"}</h1>
       <div className={styles.mainPanel}>
         <div className={styles.profile}>
           <div className={`picSelector ${styles.photo}`}>
@@ -150,7 +151,7 @@ export default function AboutSection() {
           </div>
         </div>
         <div className={styles.aboutInfo}>
-          <h1>Lorem ipsum dolor sit amet.</h1>
+          <h2>Lorem ipsum dolor sit amet.</h2>
 
           <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde odit

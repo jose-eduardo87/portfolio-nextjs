@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Button } from "@/components/ui";
+import { FaGithubSquare } from "react-icons/fa";
+import { BiWorld } from "react-icons/bi";
 import { PROFILE_PHOTO } from "helpers/paths";
 
 import styles from "./Card.module.css";
@@ -21,8 +22,16 @@ export default function Card({ i, title, description, githubLink, liveLink }) {
         </div>
       </div>
       <div className={styles.bottomRow}>
-        <Button style={{ backgroundColor: "red" }}>github</Button>
-        <Button>live</Button>
+        {githubLink && (
+          <a target="_blank" rel="noopener noreferrer" href={githubLink}>
+            <FaGithubSquare className={`${styles.icon} ${styles.githubIcon}`} />
+          </a>
+        )}
+        {liveLink && (
+          <a target="_blank" rel="noopener noreferrer" href={liveLink}>
+            <BiWorld className={`${styles.icon} ${styles.liveIcon}`} />
+          </a>
+        )}
       </div>
     </div>
   );

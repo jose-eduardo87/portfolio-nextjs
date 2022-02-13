@@ -3,3 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+.layoutContainer section {
+  min-height: 800px;
+}

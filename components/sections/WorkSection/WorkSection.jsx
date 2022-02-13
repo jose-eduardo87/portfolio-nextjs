@@ -46,7 +46,7 @@ export default function WorkSection() {
       element.style.opacity = "0";
       gsap.fromTo(
         element,
-        { x: x, y: y, autoAlpha: 0 },
+        { x, y, autoAlpha: 0 },
         {
           duration: 3,
           x: 0,
@@ -77,6 +77,7 @@ export default function WorkSection() {
 
   return (
     <section id="work" className={styles.root} ref={workRef}>
+      <h1>{isEnglish ? "WORK" : "TRABALHOS"}</h1>
       <span className={styles.vintageMan}>
         <VintageMan data-tip data-for="vintageMan" width={240} height={252} />
         <ReactTooltip

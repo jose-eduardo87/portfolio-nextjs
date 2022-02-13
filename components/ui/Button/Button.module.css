@@ -1,9 +1,10 @@
-.root {
-  border: none;
-  width: 180px;
-  height: 60px;
-  cursor: pointer;
-  outline: none;
-  font-size: inherit;
-  background-color: blue;
+.root:first-of-type {
+  margin-right: 1px;
+}
+
+@media all and (max-width: 30em) {
+  .root {
+    display: block;
+    margin: 0.4em auto;
+  }
 }

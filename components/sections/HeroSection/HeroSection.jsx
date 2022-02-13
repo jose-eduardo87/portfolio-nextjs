@@ -23,8 +23,8 @@ export default function HeroSection() {
     </h1>
   );
   const renderWords = isEnglish
-    ? ["amazing websites.", "test1", "test2", "thoughts into code."]
-    : ["websites incríveis", "teste1", "teste2", "ideias em códigos"];
+    ? ["amazing websites.", "test1.", "test2.", "thoughts into code."]
+    : ["websites incríveis.", "teste1.", "teste2.", "ideias em códigos."];
 
   useEffect(() => {
     gsap.fromTo(

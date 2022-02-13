@@ -17,9 +17,9 @@ export default function ContactSection({ clientIP }) {
   const { selector } = gsap.utils;
   const queryContact = selector(contactRef);
   const renderHeading = isEnglish ? (
-    <h1>{"LET'S CONNECT!"}</h1>
+    <h2>{"LET'S CONNECT!"}</h2>
   ) : (
-    <h1>{"VAMOS NOS CONECTAR!"}</h1>
+    <h2>{"VAMOS NOS CONECTAR!"}</h2>
   );
 
   useEffect(() => {
@@ -59,6 +59,7 @@ export default function ContactSection({ clientIP }) {
 
   return (
     <section id="contact" className={styles.root} ref={contactRef}>
+      <h1>{isEnglish ? "CONTACT" : "CONTATO"}</h1>
       <div className={styles.flexContainer}>
         <div className={styles.contactForm}>
           {renderHeading}
