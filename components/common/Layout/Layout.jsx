@@ -1,4 +1,5 @@
 import { Navbar, Footer } from "@/components/common";
+import { Burger } from "@/components/Burger";
 import LanguageProvider from "store/language-context";
 import ThemeWrapper from "store/theme-context";
 
@@ -9,7 +10,12 @@ export default function Layout({ children }) {
     <div className={styles.layoutContainer}>
       <LanguageProvider>
         <ThemeWrapper>
-          <Navbar />
+          <div className={styles.burgerWrapper}>
+            <Burger />
+          </div>
+          <div className={styles.navbarWrapper}>
+            <Navbar />
+          </div>
           {children}
           <Footer />
         </ThemeWrapper>

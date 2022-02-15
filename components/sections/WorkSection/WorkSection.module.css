@@ -1,8 +1,8 @@
 @font-face {
-  font-family: "BADABOOM";
-  src: url("/static/fonts/Badaboom/BADABB.TTF"), format("TTF");
+  font-family: "Badaboom";
+  src: url("/static/fonts/Badaboom/badaboom.ttf"), format("ttf");
   font-style: normal;
-  font-weight: 800;
+  font-weight: 400;
   font-display: swap;
 }
 
@@ -34,8 +34,7 @@
 }
 
 .tooltipMessage {
-  font-family: BADABOOM;
-  font-weight: 800;
+  font-family: "Badaboom";
 }
 
 .hoverMe {

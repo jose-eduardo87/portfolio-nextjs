@@ -7,3 +7,23 @@
 .layoutContainer section {
   min-height: 800px;
 }
+
+.burgerWrapper {
+  display: none;
+}
+
+.navbarWrapper {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+@media (min-width: 300px) and (max-width: 1270px) {
+  .burgerWrapper {
+    display: block;
+  }
+
+  .navbarWrapper {
+    display: none;
+  }
+}

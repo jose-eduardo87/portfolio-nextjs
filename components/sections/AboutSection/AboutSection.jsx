@@ -62,7 +62,7 @@ export default function AboutSection() {
 
   useEffect(() => {
     const animatePhotoOnEnter = (icon) => {
-      gsap.fromTo(icon, { y: -50 }, { y: 0, duration: 0.5 });
+      gsap.fromTo(icon, { y: -50 }, { y: 0, duration: 0.4 });
     };
 
     queryAbout(".picSelector").forEach((photo) => {
@@ -80,7 +80,7 @@ export default function AboutSection() {
       gsap.fromTo(
         icon,
         { opacity: 0, transform: "scale(0.2)" },
-        { opacity: 1, transform: "scale(1)", delay: index * 0.125 }
+        { opacity: 1, transform: "scale(1)", delay: index * 0.1 }
       );
     };
 
