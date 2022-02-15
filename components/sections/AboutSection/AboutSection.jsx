@@ -58,12 +58,12 @@ export default function AboutSection() {
     <h3>Tecnologias que trabalho atualmente:</h3>
   );
 
+  useEffect(() => gsap.registerPlugin(ScrollTrigger), []);
+
   useEffect(() => {
     const animatePhotoOnEnter = (icon) => {
-      gsap.fromTo(icon, { y: -50 }, { y: 0, duration: 4 });
+      gsap.fromTo(icon, { y: -50 }, { y: 0, duration: 0.5 });
     };
-
-    gsap.registerPlugin(ScrollTrigger);
 
     queryAbout(".picSelector").forEach((photo) => {
       ScrollTrigger.create({
@@ -80,11 +80,9 @@ export default function AboutSection() {
       gsap.fromTo(
         icon,
         { opacity: 0, transform: "scale(0.2)" },
-        { opacity: 1, transform: "scale(1)", delay: index * 1 }
+        { opacity: 1, transform: "scale(1)", delay: index * 0.125 }
       );
     };
-
-    gsap.registerPlugin(ScrollTrigger);
 
     queryAbout(".iconSelector").forEach((icon, index) => {
       ScrollTrigger.create({
@@ -132,7 +130,7 @@ export default function AboutSection() {
             </a>
             <a
               target="_blank"
-              href="https://www.linkedin.com"
+              href="www.linkedin.com/in/eduardoaraujodev"
               rel="noopener noreferrer"
             >
               <FaLinkedinIn

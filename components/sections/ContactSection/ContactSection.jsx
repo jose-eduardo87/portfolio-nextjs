@@ -9,7 +9,6 @@ import styles from "./ContactSection.module.css";
 
 export default function ContactSection({ clientIP }) {
   const contactRef = useRef();
-  const formRef = createRef();
   const globeRef = createRef();
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");

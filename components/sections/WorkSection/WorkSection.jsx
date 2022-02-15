@@ -32,43 +32,20 @@ export default function WorkSection() {
   );
 
   useEffect(() => {
-    const animateFrom = (element, direction = 1) => {
-      let x = 0,
-        y = direction * 100;
-      if (element.classList.contains("revealFromLeft")) {
-        x = -100;
-        y = 0;
-      } else if (element.classList.contains("revealFromRight")) {
-        x = 100;
-        y = 0;
-      }
-      element.style.transform = `translate(${x}px, ${y}px)`;
-      element.style.opacity = "0";
+    const animateWork = (element) => {
       gsap.fromTo(
         element,
-        { x, y, autoAlpha: 0 },
-        {
-          duration: 3,
-          x: 0,
-          y: 0,
-          autoAlpha: 1,
-          ease: "expo",
-          overwrite: "auto",
-        }
+        { opacity: 0, transform: "scale(0.9)" },
+        { opacity: 1, transform: "scale(1)" }
       );
     };
-    const hide = (element) => gsap.set(element, { autoAlpha: 0 });
 
     gsap.registerPlugin(ScrollTrigger);
 
     queryWork(".cardSelector").forEach((element) => {
-      hide(element);
-
       ScrollTrigger.create({
         trigger: element,
-        onEnter: () => animateFrom(element),
-        onEnterBack: () => animateFrom(element, -1),
-        onLeave: () => hide(element),
+        onEnter: () => animateWork(element),
       });
     });
 
@@ -103,7 +80,9 @@ export default function WorkSection() {
             }
             className={styles.hoverMe}
           >
-            HOVER OVER MY FACE!
+            {isEnglish
+              ? "HOVER OVER MY FACE!"
+              : "PASSE O MOUSE SOBRE MEU ROSTO!"}
           </p>
         </div>
       </span>

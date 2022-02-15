@@ -3,7 +3,7 @@ import { useTheme } from "store/theme-context";
 
 import styles from "./Button.module.css";
 
-const buttonStyle = (hoverState, isDark) => {
+const buttonStyle = (hoverState, isDark, isDisabled) => {
   return {
     minWidth: "100px",
     minHeight: "60px",
@@ -11,12 +11,11 @@ const buttonStyle = (hoverState, isDark) => {
     border: "none",
     textDecoration: "none",
     textAlign: "center",
-    transition: "all .2s",
-    cursor: "pointer",
+    cursor: isDisabled ? "not-allowed" : "pointer",
     outline: "none",
     fontSize: "inherit",
     padding: ".35em 1.2em",
-    transition: "1s all",
+    transition: ".5s all",
     backgroundColor: hoverState
       ? `${isDark ? "#FFFFFF" : "#000000"}`
       : `${isDark ? "#00564d" : "#8ABAAE"}`,
@@ -26,7 +25,7 @@ const buttonStyle = (hoverState, isDark) => {
   };
 };
 
-export default function Button({ children, onClick, ...CSSStyles }) {
+export default function Button({ children, isDisabled }) {
   const [isHovering, setIsHovering] = useState(false);
   const { isDark } = useTheme();
 
@@ -38,8 +37,8 @@ export default function Button({ children, onClick, ...CSSStyles }) {
       onMouseEnter={() => hoverButtonHandler("enter")}
       onMouseLeave={() => hoverButtonHandler()}
       className={styles.root}
-      style={buttonStyle(isHovering, isDark)}
-      onClick={onClick}
+      style={buttonStyle(isHovering, isDark, isDisabled)}
+      disabled={isDisabled}
     >
       {children}
     </button>

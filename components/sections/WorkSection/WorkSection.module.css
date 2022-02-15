@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "BADABOOM";
+  src: url("/static/fonts/Badaboom/BADABB.TTF"), format("TTF");
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}
+
 .root {
   position: relative;
   border-bottom: 1px solid white;
@@ -13,7 +21,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  top: 0;
+  top: 8%;
   right: 0;
 }
 
@@ -26,8 +34,8 @@
 }
 
 .tooltipMessage {
-  font-family: BADABOOM, sans-serif;
-  /* font-weight: 800; */
+  font-family: BADABOOM;
+  font-weight: 800;
 }
 
 .hoverMe {

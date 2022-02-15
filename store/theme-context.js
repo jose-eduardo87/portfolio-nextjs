@@ -12,7 +12,7 @@ export default function ThemeWrapper({ children }) {
   const toggleMode = () => setIsDark((currentState) => !currentState);
 
   useEffect(() => {
-    document.body.style.transition = ".4s background-color";
+    document.body.style.transition = ".5s background-color";
 
     const LIGHT_BG = [
       "#E6BEAE",

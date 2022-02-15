@@ -1,0 +1,7 @@
+@font-face {
+  font-family: "BADABOOM";
+  src: url("/static/fonts/Badaboom/BADABB.TTF"), format("TTF");
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}
