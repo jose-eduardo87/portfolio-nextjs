@@ -29,9 +29,10 @@ export default function AboutSection() {
   const queryAbout = gsap.utils.selector(aboutRef);
   const { isEnglish } = useLanguage();
   const iconStyles = {
-    width: "150px",
-    height: "150px",
+    width: "130px",
+    height: "130px",
   };
+
   const renderTechStack = [
     <Git key="Git Icon" alt="Git Icon" {...iconStyles} />,
     <GSAP key="GSAP Icon" alt="GSAP Icon" {...iconStyles} />,
@@ -130,7 +131,7 @@ export default function AboutSection() {
             </a>
             <a
               target="_blank"
-              href="www.linkedin.com/in/eduardoaraujodev"
+              href="https://www.linkedin.com/in/eduardoaraujodev"
               rel="noopener noreferrer"
             >
               <FaLinkedinIn

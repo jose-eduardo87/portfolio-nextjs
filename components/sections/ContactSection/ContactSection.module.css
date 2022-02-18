@@ -22,9 +22,29 @@
 
 .contactForm {
   width: 50%;
-  height: 45vh;
+  /* height: 45vh; */
 }
 
 .globeContainer {
   width: 50%;
+}
+
+@media (max-width: 1180px) {
+  .flexContainer {
+    flex-direction: column;
+  }
+
+  .contactForm {
+    width: 100%;
+  }
+
+  .globeContainer {
+    width: 100%;
+  }
+}
+
+@media (max-width: 350px) {
+  .globeContainer {
+    display: none;
+  }
 }

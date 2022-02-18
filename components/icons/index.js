@@ -1,9 +1,13 @@
+export { default as Brazil } from "./Brazil";
 export { default as Git } from "./Git";
 export { default as GSAP } from "./GSAP";
 export { default as MongoDB } from "./MongoDB";
+export { default as Moon } from "./Moon";
 export { default as NextJS } from "./NextJS";
 export { default as NodeJS } from "./NodeJS";
 export { default as Postman } from "./Postman";
 export { default as ReactJS } from "./ReactJS";
+export { default as Sun } from "./Sun";
 export { default as TypeScript } from "./TypeScript";
+export { default as USA } from "./USA";
 export { default as VintageMan } from "./VintageMan";

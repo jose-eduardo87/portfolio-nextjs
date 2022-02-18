@@ -1,6 +1,5 @@
 .container {
-  max-width: 1320px;
-  width: 100%;
+  max-width: 68vw;
   margin: 0 auto;
 }
 
@@ -10,4 +9,10 @@
 
 .container section:last-child {
   margin-bottom: 4rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 95%;
+  }
 }

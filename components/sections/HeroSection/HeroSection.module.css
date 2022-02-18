@@ -14,15 +14,16 @@
   font-family: "Raleway", sans-serif;
 }
 
+.backgroundVideo {
+  width: 100% !important;
+  height: 100% !important;
+}
+
 .heroContent h1 {
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   font-size: 5rem;
-  font-weight: 100;
+  font-weight: 900;
   text-align: justify;
-  /* color: rgba(255, 255, 255, 0.2); */
-  /* background-image: linear-gradient(60deg, #e21143, #ffb03a);
-  background-clip: text;
-  color: transparent; */
 }
 
 .heroContent p {
@@ -30,4 +31,80 @@
   font-weight: 100;
   letter-spacing: 1px;
   font-size: 2.5rem;
+}
+
+@media (max-width: 1270px) {
+  .root {
+    height: 100vh;
+  }
+}
+
+@media (max-width: 1190px) {
+  .heroContent h1 {
+    font-size: 4rem;
+  }
+
+  .heroContent p {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 1032px) {
+  .heroContent h1 {
+    font-size: 3.8rem;
+  }
+
+  .heroContent p {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 1032px) {
+  .heroContent h1 {
+    font-size: 3.6rem;
+  }
+
+  .heroContent p {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 782px) {
+  .heroContent h1 {
+    font-size: 3.4rem;
+  }
+
+  .heroContent p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 660px) {
+  .heroContent h1 {
+    font-size: 3.4rem;
+  }
+
+  .heroContent p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .heroContent h1 {
+    font-size: 3rem;
+  }
+
+  .heroContent p {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroContent h1 {
+    font-size: 2rem;
+  }
+
+  .heroContent p {
+    font-size: 0.7rem;
+  }
 }

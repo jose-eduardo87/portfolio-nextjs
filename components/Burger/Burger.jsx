@@ -1,56 +1,74 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { slide as Menu } from "react-burger-menu";
+import { pushRotate as Menu } from "react-burger-menu";
+import { Moon, Sun, Brazil, USA } from "../icons";
 import { useTheme } from "store/theme-context";
+import { useLanguage } from "store/language-context";
 
-const BURGER_STYLES = {
-  bmBurgerButton: {
-    position: "fixed",
-    width: "36px",
-    height: "30px",
-    left: "36px",
-    top: "36px",
-  },
-  bmBurgerBars: {
-    background: "#373a47",
-  },
-  bmBurgerBarsHover: {
-    background: "#a90000",
-  },
-  bmCrossButton: {
-    height: "24px",
-    width: "24px",
-  },
-  bmCross: {
-    background: "#bdc3c7",
-  },
-  bmMenuWrap: {
-    position: "fixed",
-    height: "100%",
-  },
-  bmMenu: {
-    background: "#373a47",
-    padding: "2.5em 1.5em 0",
-    fontSize: "1.15em",
-  },
-  bmMorphShape: {
-    fill: "#373a47",
-  },
-  bmItemList: {
-    color: "#b8b7ad",
-    padding: "0.8em",
-  },
-  bmItem: {
-    display: "inline-block",
-  },
-  bmOverlay: {
-    background: "rgba(0, 0, 0, 0.3)",
-  },
+import styles from "./Burger.module.css";
+
+const BURGER_STYLES = (isDark, currentBGHex) => {
+  const color = isDark ? "#FFFFFF" : "#000000";
+  return {
+    bmBurgerButton: {
+      position: "fixed",
+      width: "36px",
+      height: "30px",
+      left: "36px",
+      top: "36px",
+    },
+    bmBurgerBars: {
+      background: color,
+    },
+    bmBurgerBarsHover: {
+      background: color,
+    },
+    bmCrossButton: {
+      height: "24px",
+      width: "24px",
+    },
+    bmCross: {
+      background: color,
+    },
+    bmMenuWrap: {
+      position: "fixed",
+      height: "100%",
+    },
+    bmMenu: {
+      background: currentBGHex,
+      padding: "2.5em 1.5em 0",
+      fontSize: "1.15em",
+    },
+    bmMorphShape: {
+      fill: "#373a47",
+    },
+    bmItemList: {
+      color: color,
+      padding: "0.8em",
+    },
+    bmItem: {
+      display: "inline-block",
+    },
+    bmOverlay: {
+      background: "rgba(0, 0, 0, 0.3)",
+    },
+  };
 };
 
 export default function Burger() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { isDark, currentBGHex } = useTheme();
+  const { isDark, toggleMode, currentBGHex } = useTheme();
+  const { isEnglish, toggleLanguage } = useLanguage();
+  const renderThemeIcon = isDark ? (
+    <Moon width={32} height={32} onClick={toggleMode} />
+  ) : (
+    <Sun width={32} height={32} onClick={toggleMode} />
+  );
+  const renderLanguageIcon = isEnglish ? (
+    <Brazil width={32} height={32} onClick={toggleLanguage} />
+  ) : (
+    <USA width={32} height={32} onClick={toggleLanguage} />
+  );
 
   const menuToggleHandler = () =>
     setIsMenuOpen((currentState) => !currentState);
@@ -68,23 +86,32 @@ export default function Burger() {
   return (
     <Menu
       noOverlay
+      width={"100%"}
       isOpen={isMenuOpen}
       onStateChange={onChangeHandler}
-      styles={BURGER_STYLES}
+      styles={BURGER_STYLES(isDark, currentBGHex)}
     >
-      <ul>
+      <ul className={styles.navContainer}>
         <Link href="/" passHref>
           <li onClick={menuToggleHandler}>Home</li>
         </Link>
         <Link href="/#about" passHref>
-          <li onClick={menuToggleHandler}>About</li>
+          <li onClick={menuToggleHandler}>{isEnglish ? "About" : "Sobre"}</li>
         </Link>
         <Link href="/#work" passHref>
-          <li onClick={menuToggleHandler}>Work</li>
+          <li onClick={menuToggleHandler}>
+            {isEnglish ? "Work" : "Trabalhos"}
+          </li>
         </Link>
         <Link href="/#contact" passHref>
-          <li onClick={menuToggleHandler}>Contact</li>
+          <li onClick={menuToggleHandler}>
+            {isEnglish ? "Contact" : "Contato"}
+          </li>
         </Link>
+        <div className={styles.iconsWrapper}>
+          {renderThemeIcon}
+          {renderLanguageIcon}
+        </div>
       </ul>
     </Menu>
   );

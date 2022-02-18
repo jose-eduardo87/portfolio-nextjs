@@ -22,3 +22,9 @@
   font-weight: 100;
   margin: 6px 0 6px 0;
 }
+
+@media (max-width: 1180px) {
+  .root {
+    width: 100%;
+  }
+}

@@ -1,0 +1,26 @@
+.navContainer {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 40%;
+}
+
+.navContainer li {
+  list-style-type: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.5rem;
+}
+
+.iconsWrapper {
+  width: 100px;
+  margin-top: 4rem;
+  display: flex;
+  justify-content: space-between;
+}

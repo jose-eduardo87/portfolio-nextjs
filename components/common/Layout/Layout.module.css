@@ -18,7 +18,7 @@
   z-index: 999;
 }
 
-@media (min-width: 300px) and (max-width: 1270px) {
+@media (max-width: 1270px) {
   .burgerWrapper {
     display: block;
   }

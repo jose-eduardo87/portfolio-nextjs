@@ -2,7 +2,6 @@ import { useRef, useEffect } from "react";
 import { gsap } from "gsap/dist/gsap";
 import { Typewriter } from "react-simple-typewriter";
 import { HERO_VIDEO } from "helpers/paths";
-import { useTheme } from "store/theme-context";
 import { useLanguage } from "store/language-context";
 
 import styles from "./HeroSection.module.css";

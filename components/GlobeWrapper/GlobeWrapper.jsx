@@ -1,4 +1,4 @@
-import { forwardRef, useEffect } from "react";
+import { forwardRef, useEffect, useMemo, useRef } from "react";
 // import dynamic from "next/dynamic";
 // const Globe = dynamic(import("react-globe.gl"), { ssr: false });
 let Globe = () => null;
@@ -8,11 +8,14 @@ if (typeof window !== "undefined") {
 import { EARTH_IMAGE } from "helpers/paths";
 import { getMiddlePointBetweenTwoLocations } from "helpers/functions";
 
+import styles from "./GlobeWrapper.module.css";
+
 const GlobeWrapper = forwardRef(({ endLat, endLng }, ref) => {
-  const myCoords = {
-    lat: -8.00937,
-    lng: -34.8687,
-  };
+  const globeDimension = useRef();
+  const myCoords = useMemo(() => {
+    return { lat: -8.00937, lng: -34.8687 };
+  }, []);
+  const BREAKPOINT = 550;
   const arcsData = [
     {
       startLat: myCoords.lat,
@@ -21,6 +24,17 @@ const GlobeWrapper = forwardRef(({ endLat, endLng }, ref) => {
       endLng,
     },
   ];
+
+  // useEffect RESPONSIBLE TO THE GLOBE'S RESPONSIVENESS
+  useEffect(() => {
+    const CURRENTSCREENWIDTH = window.innerWidth;
+
+    if (CURRENTSCREENWIDTH < BREAKPOINT) {
+      globeDimension.current = 350;
+    } else {
+      globeDimension.current = 550;
+    }
+  });
 
   useEffect(() => {
     const [lat, lng] = getMiddlePointBetweenTwoLocations(
@@ -39,18 +53,20 @@ const GlobeWrapper = forwardRef(({ endLat, endLng }, ref) => {
   }, [ref, myCoords, endLat, endLng]);
 
   return (
-    <Globe
-      ref={ref}
-      width={550}
-      height={550}
-      atmosphereAltitude={0.3}
-      backgroundColor={"rgba(0,0,0,0)"}
-      globeImageUrl={EARTH_IMAGE}
-      arcsData={arcsData}
-      arcDashLength={0.4}
-      arcDashGap={1}
-      arcDashAnimateTime={3000}
-    />
+    <div className={styles.root}>
+      <Globe
+        ref={ref}
+        width={globeDimension.current}
+        height={globeDimension.current}
+        atmosphereAltitude={0.3}
+        backgroundColor={"rgba(0,0,0,0)"}
+        globeImageUrl={EARTH_IMAGE}
+        arcsData={arcsData}
+        arcDashLength={0.4}
+        arcDashGap={1}
+        arcDashAnimateTime={3000}
+      />
+    </div>
   );
 });
 
