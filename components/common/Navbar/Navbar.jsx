@@ -59,17 +59,17 @@ export default function Navbar() {
         <Toggle
           icons={{
             checked: (
-              <WiDaySunny
+              <WiNightClear
                 style={{
-                  color: "yellow",
+                  color: "white",
                   left: "-40%",
                   ...styleIcons,
                 }}
               />
             ),
             unchecked: (
-              <WiNightClear
-                style={{ color: "white", left: "-50%", ...styleIcons }}
+              <WiDaySunny
+                style={{ color: "yellow", left: "-50%", ...styleIcons }}
               />
             ),
           }}

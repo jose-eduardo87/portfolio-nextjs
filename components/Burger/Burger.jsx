@@ -59,15 +59,23 @@ export default function Burger() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isDark, toggleMode, currentBGHex } = useTheme();
   const { isEnglish, toggleLanguage } = useLanguage();
+  const iconsProps = (type) => {
+    return {
+      style: { cursor: "pointer" },
+      width: 32,
+      height: 32,
+      onClick: type === "theme" ? toggleMode : toggleLanguage,
+    };
+  };
   const renderThemeIcon = isDark ? (
-    <Moon width={32} height={32} onClick={toggleMode} />
+    <Sun {...iconsProps("theme")} />
   ) : (
-    <Sun width={32} height={32} onClick={toggleMode} />
+    <Moon {...iconsProps("theme")} />
   );
   const renderLanguageIcon = isEnglish ? (
-    <Brazil width={32} height={32} onClick={toggleLanguage} />
+    <Brazil {...iconsProps()} />
   ) : (
-    <USA width={32} height={32} onClick={toggleLanguage} />
+    <USA {...iconsProps()} />
   );
 
   const menuToggleHandler = () =>

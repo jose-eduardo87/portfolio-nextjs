@@ -1,10 +1,6 @@
-.root:first-of-type {
-  margin-right: 1px;
-}
-
-@media all and (max-width: 30em) {
+/* @media all and (max-width: 30em) {
   .root {
     display: block;
     margin: 0.4em auto;
   }
-}
+} */

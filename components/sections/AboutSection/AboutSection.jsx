@@ -29,8 +29,8 @@ export default function AboutSection() {
   const queryAbout = gsap.utils.selector(aboutRef);
   const { isEnglish } = useLanguage();
   const iconStyles = {
-    width: "130px",
-    height: "130px",
+    width: "150px",
+    height: "150px",
   };
 
   const renderTechStack = [

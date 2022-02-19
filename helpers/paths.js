@@ -20,7 +20,7 @@ export const WORK = [
     liveLink: "https://www.28apolloquay.com/",
   },
   {
-    title: "Vanilla e-commerce application",
+    title: "Vanilla e-commerce app",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio perferendis minima enim facere, debitis obcaecati quidem ipsa delectus assumenda placeat alias, doloribus necessitatibus odit vero.",
     // image: IMG_PATH,

@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 import styles from "./Input.module.css";
 
 const Input = ({ textarea = false, ...inputConfig }) => {
@@ -12,4 +14,4 @@ const Input = ({ textarea = false, ...inputConfig }) => {
   );
 };
 
-export default Input;
+export default memo(Input);

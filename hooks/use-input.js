@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer, useCallback } from "react";
 
 const initialValue = { value: "", isTouched: false };
 
@@ -22,9 +22,11 @@ const useInput = (validateField) => {
   const isValid = validateField(input.value);
   const hasError = !isValid && input.isTouched;
 
-  const onBlurChangeHandler = () => dispatch({ type: "BLUR" });
-  const onChangeHandler = (event) =>
-    dispatch({ type: "INPUT", value: event.target.value });
+  const onBlurChangeHandler = useCallback(() => dispatch({ type: "BLUR" }), []);
+  const onChangeHandler = useCallback(
+    (event) => dispatch({ type: "INPUT", value: event.target.value }),
+    []
+  );
   const reset = () => dispatch({ type: "RESET" });
 
   return {

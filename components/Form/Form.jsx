@@ -2,7 +2,7 @@ import { Input } from "@/components/Input";
 import { Button } from "@/components/ui";
 import { useTheme } from "store/theme-context";
 import useInput from "hooks/use-input";
-
+import useHttp from "hooks/use-http";
 import styles from "./Form.module.css";
 
 const Form = ({ isEnglish }) => {
@@ -34,24 +34,37 @@ const Form = ({ isEnglish }) => {
     isValid: isMessageValid,
     hasError: messageHasError,
   } = useInput(nameAndEmailValidator);
+  const { error, isLoading, sendRequest } = useHttp();
   const isFormValid = isNameValid && isEmailValid && isMessageValid;
 
-  const formHandler = (e) => {
+  const formHandler = async (e) => {
     e.preventDefault();
 
     if (!isFormValid) {
       return;
     }
 
+    await sendRequest("/api/contacts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: {
+        name: nameValue,
+        email: emailValue,
+        message: messageValue,
+      },
+    });
+
     resetName();
     resetEmail();
     resetMessage();
   };
+
   const setVisibility = (hasError) => (hasError ? "visible" : "hidden");
   const errorMessageColor = isDark ? "#EFFD5F" : "#7A6B00";
 
   return (
     <form className={`formSelector ${styles.root}`} onSubmit={formHandler}>
+      {error && <p style={{ color: errorMessageColor }}>{error}</p>}
       <Input
         type="text"
         placeholder={isEnglish ? "Your name" : "Seu nome"}
@@ -107,7 +120,13 @@ const Form = ({ isEnglish }) => {
       </p>
 
       <Button isDisabled={!isFormValid}>
-        {isEnglish ? "Send message!" : "Enviar mensagem!"}
+        {isLoading
+          ? isEnglish
+            ? "Sending..."
+            : "Enviando..."
+          : isEnglish
+          ? "Send message!"
+          : "Enviar mensagem!"}
       </Button>
     </form>
   );
