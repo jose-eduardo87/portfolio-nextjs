@@ -36,6 +36,7 @@ export async function getServerSideProps({ req }) {
   const ip = forwarded
     ? forwarded.split(/, /)[0]
     : req.connection.remoteAddress;
+
   return {
     props: {
       ip,

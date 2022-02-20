@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useMemo } from "react";
 import dynamic from "next/dynamic";
 const ReactTooltip = dynamic(() => import("react-tooltip"), {
   ssr: false,
@@ -18,17 +18,19 @@ export default function WorkSection() {
   const queryWork = gsap.utils.selector(workRef);
   const { isDark } = useTheme();
   const { isEnglish } = useLanguage();
-  const renderWork = WORK.map(
-    ({ title, description, githubLink, liveLink }, key) => (
-      <Card
-        key={key}
-        i={key}
-        title={title}
-        description={description}
-        githubLink={githubLink}
-        liveLink={liveLink}
-      />
-    )
+  const renderWork = useMemo(
+    () =>
+      WORK.map(({ title, description, githubLink, liveLink }, key) => (
+        <Card
+          key={key}
+          i={key}
+          title={isEnglish ? title["en"] : title["ptBR"]}
+          description={isEnglish ? description["en"] : description["ptBR"]}
+          githubLink={githubLink}
+          liveLink={liveLink}
+        />
+      )),
+    [isEnglish]
   );
 
   useEffect(() => {

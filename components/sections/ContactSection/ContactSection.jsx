@@ -1,4 +1,4 @@
-import { createRef, useEffect, useRef, useState } from "react";
+import { createRef, useEffect, useRef, useState, useReducer } from "react";
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { GlobeWrapper } from "@/components/GlobeWrapper";
@@ -8,10 +8,13 @@ import { useLanguage } from "store/language-context";
 import styles from "./ContactSection.module.css";
 
 export default function ContactSection({ clientIP }) {
+  console.log("Inside contact.");
   const contactRef = useRef();
   const globeRef = createRef();
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
+  const [coordinates, setCoordinates] = useState({
+    latitude: "",
+    longitude: "",
+  });
   const { isEnglish } = useLanguage();
   const { selector } = gsap.utils;
   const queryContact = selector(contactRef);
@@ -27,8 +30,7 @@ export default function ContactSection({ clientIP }) {
       const response = await fetch(`http://ip-api.com/json/${clientIPTest}`);
       const { lat, lon } = await response.json();
 
-      setLatitude(lat);
-      setLongitude(lon);
+      setCoordinates({ latitude: lat, longitude: lon });
     };
 
     fetchData();
@@ -69,7 +71,11 @@ export default function ContactSection({ clientIP }) {
           <Form isEnglish={isEnglish} />
         </div>
         <div id="globeViz" className={styles.globeContainer}>
-          <GlobeWrapper endLat={latitude} endLng={longitude} ref={globeRef} />
+          <GlobeWrapper
+            endLat={coordinates.latitude}
+            endLng={coordinates.longitude}
+            ref={globeRef}
+          />
         </div>
       </div>
     </section>

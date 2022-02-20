@@ -20,3 +20,7 @@ export function getMiddlePointBetweenTwoLocations(lat1, lng1, lat2, lng2) {
 
   return [convertToDegrees(lat3), convertToDegrees(lng3)];
 }
+
+export const nameAndEmailValidator = (value) => value.trim() !== "";
+export const emailValidator = (email) =>
+  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);

@@ -21,7 +21,7 @@ export default function HeroSection() {
       Meu nome é Eduardo.
     </h1>
   );
-  const renderWords = isEnglish
+  const WORDS = isEnglish
     ? ["amazing websites.", "test1.", "test2.", "thoughts into code."]
     : ["websites incríveis.", "teste1.", "teste2.", "ideias em códigos."];
 
@@ -52,7 +52,7 @@ export default function HeroSection() {
           {isEnglish ? "I develop" : "Eu desenvolvo"}{" "}
           <span>
             <Typewriter
-              words={renderWords}
+              words={WORDS}
               loop={false}
               cursor
               cursorStyle={"I"}

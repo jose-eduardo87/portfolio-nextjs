@@ -1,15 +1,15 @@
 import { Input } from "@/components/Input";
 import { Button } from "@/components/ui";
 import { useTheme } from "store/theme-context";
+import { nameAndEmailValidator, emailValidator } from "helpers/functions";
 import useInput from "hooks/use-input";
 import useHttp from "hooks/use-http";
+
 import styles from "./Form.module.css";
 
 const Form = ({ isEnglish }) => {
+  console.log("Inside form.");
   const { isDark } = useTheme();
-  const nameAndEmailValidator = (value) => value.trim() !== "";
-  const emailValidator = (email) =>
-    /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
   const {
     value: nameValue,
     onBlur: onNameBlur,

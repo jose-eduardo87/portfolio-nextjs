@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import Ticker from "react-ticker";
 import PageVisibility from "react-page-visibility";
 
@@ -20,4 +20,4 @@ const Marquee = ({ children }) => {
   );
 };
 
-export default Marquee;
+export default memo(Marquee);

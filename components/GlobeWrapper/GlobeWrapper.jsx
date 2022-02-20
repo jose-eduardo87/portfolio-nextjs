@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useMemo, useRef } from "react";
+import { memo, forwardRef, useEffect, useMemo, useRef } from "react";
 // import dynamic from "next/dynamic";
 // const Globe = dynamic(import("react-globe.gl"), { ssr: false });
 let Globe = () => null;
@@ -15,7 +15,6 @@ const GlobeWrapper = forwardRef(({ endLat, endLng }, ref) => {
   const myCoords = useMemo(() => {
     return { lat: -8.00937, lng: -34.8687 };
   }, []);
-  const BREAKPOINT = 550;
   const arcsData = [
     {
       startLat: myCoords.lat,
@@ -24,6 +23,7 @@ const GlobeWrapper = forwardRef(({ endLat, endLng }, ref) => {
       endLng,
     },
   ];
+  const BREAKPOINT = 550;
 
   // useEffect RESPONSIBLE TO THE GLOBE'S RESPONSIVENESS
   useEffect(() => {
@@ -72,4 +72,4 @@ const GlobeWrapper = forwardRef(({ endLat, endLng }, ref) => {
 
 GlobeWrapper.displayName = "GlobeWrapper";
 
-export default GlobeWrapper;
+export default memo(GlobeWrapper);

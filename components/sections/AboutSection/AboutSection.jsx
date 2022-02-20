@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useMemo } from "react";
 import Image from "next/image";
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -28,31 +28,41 @@ export default function AboutSection() {
   const aboutRef = useRef(null);
   const queryAbout = gsap.utils.selector(aboutRef);
   const { isEnglish } = useLanguage();
-  const iconStyles = {
-    width: "150px",
-    height: "150px",
-  };
+  const iconStyles = useMemo(() => {
+    return {
+      width: "150px",
+      height: "150px",
+    };
+  }, []);
 
-  const renderTechStack = [
-    <Git key="Git Icon" alt="Git Icon" {...iconStyles} />,
-    <GSAP key="GSAP Icon" alt="GSAP Icon" {...iconStyles} />,
-    <MongoDB key="MongoDB Icon" alt="MongoDB Icon" {...iconStyles} />,
-    <NextJS key="NextJS Icon" alt="NextJS Icon" {...iconStyles} />,
-    <NodeJS key="NodeJS Icon" alt="NodeJS Icon" {...iconStyles} />,
-    <Postman key="Postman Icon" alt="Postman Icon" {...iconStyles} />,
-    <ReactJS key="ReactJS Icon" alt="ReactJS Icon" {...iconStyles} />,
-    <TypeScript key="TypeScript Icon" alt="TypeScript Icon" {...iconStyles} />,
-  ].map((icon, i) => (
-    <div
-      style={{
-        display: "inline-block",
-        marginRight: "1rem",
-      }}
-      key={i}
-    >
-      {icon}
-    </div>
-  ));
+  const renderTechStack = useMemo(
+    () =>
+      [
+        <Git key="Git Icon" alt="Git Icon" {...iconStyles} />,
+        <GSAP key="GSAP Icon" alt="GSAP Icon" {...iconStyles} />,
+        <MongoDB key="MongoDB Icon" alt="MongoDB Icon" {...iconStyles} />,
+        <NextJS key="NextJS Icon" alt="NextJS Icon" {...iconStyles} />,
+        <NodeJS key="NodeJS Icon" alt="NodeJS Icon" {...iconStyles} />,
+        <Postman key="Postman Icon" alt="Postman Icon" {...iconStyles} />,
+        <ReactJS key="ReactJS Icon" alt="ReactJS Icon" {...iconStyles} />,
+        <TypeScript
+          key="TypeScript Icon"
+          alt="TypeScript Icon"
+          {...iconStyles}
+        />,
+      ].map((icon, i) => (
+        <div
+          style={{
+            display: "inline-block",
+            marginRight: "1rem",
+          }}
+          key={i}
+        >
+          {icon}
+        </div>
+      )),
+    [iconStyles]
+  );
   const renderHeading = isEnglish ? (
     <h3>Technologies I am currently working with:</h3>
   ) : (
