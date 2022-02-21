@@ -80,7 +80,7 @@ const Form = ({ isEnglish }) => {
           color: errorMessageColor,
         }}
       >
-        {isEnglish ? "Can I please know your name?" : "Posso saber seu nome?"}
+        {isEnglish ? "May I know your name?" : "Posso saber seu nome?"}
       </p>
       <Input
         type="email"

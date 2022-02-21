@@ -23,6 +23,7 @@ import { PROFILE_PHOTO } from "helpers/paths";
 import { useLanguage } from "store/language-context";
 
 import styles from "./AboutSection.module.css";
+import Link from "next/link";
 
 export default function AboutSection() {
   const aboutRef = useRef(null);
@@ -35,6 +36,64 @@ export default function AboutSection() {
     };
   }, []);
 
+  const renderAboutInfo = isEnglish ? (
+    <>
+      <h2>Lorem ipsum dolor sit amet.</h2>
+
+      <p>
+        I am a Brazilian Full-Stack developer. I can confidently say that
+        improve my skills as a software developer become my biggest personal
+        objective and I have dedicated all the time I can to fulfill it.
+      </p>
+      <p>
+        New challenges motivate me. To solve a problem brings me satisfaction. I
+        value for organization, elegance and optimization in any code I write.
+        In my spare time, I like to learn about plants, play videogames and go
+        for outside activities. Family is the most important thing to me. I have
+        one little kid and the most beautiful spouse in the world.
+      </p>
+      <p>
+        I am interested in all development steps, with emphasis on Front-End. I
+        am open to proposals and freelance jobs.
+      </p>
+
+      <Link passHref href="/#contact">
+        <p>Let&apos;s build something special.</p>
+      </Link>
+    </>
+  ) : (
+    <>
+      <h2>Lorem ipsum dolor sit amet.</h2>
+
+      <p>
+        Sou um desenvolvedor <i>Full-Stack</i> brasileiro. Posso dizer
+        confidente que melhorar minhas habilidades como desenvolvedor de{" "}
+        <i>software</i> tornou-se meu maior objetivo pessoal e tenho dedicado
+        todo o tempo que posso a alcançar este objetivo.
+      </p>
+      <p>
+        Novos desafios me motivam. Resolver um problema me traz satisfação.
+        Prezo por organização, elegância e otimização em qualquer código que eu
+        escrevo. Em meu tempo livre, gosto de ler sobre plantas, jogos de{" "}
+        <i>videogames</i> e atividades externas. Família é o que há de mais
+        importante para mim. Tenho um filho e esposa mais lindos do mundo.
+      </p>
+      <p>
+        Possuo interesse em todas as etapas de desenvolvimento, com ênfase em{" "}
+        <i>Front-End</i>. Estou aberto a propostas e trabalhos <i>freelance</i>.
+      </p>
+
+      <Link passHref href="/#contact">
+        <p>Vamos construir algo especial.</p>
+      </Link>
+    </>
+  );
+
+  const renderHeading = isEnglish ? (
+    <h3>Technologies I am currently working with:</h3>
+  ) : (
+    <h3>Tecnologias que trabalho atualmente:</h3>
+  );
   const renderTechStack = useMemo(
     () =>
       [
@@ -62,11 +121,6 @@ export default function AboutSection() {
         </div>
       )),
     [iconStyles]
-  );
-  const renderHeading = isEnglish ? (
-    <h3>Technologies I am currently working with:</h3>
-  ) : (
-    <h3>Tecnologias que trabalho atualmente:</h3>
   );
 
   useEffect(() => gsap.registerPlugin(ScrollTrigger), []);
@@ -159,25 +213,7 @@ export default function AboutSection() {
             </a>
           </div>
         </div>
-        <div className={styles.aboutInfo}>
-          <h2>Lorem ipsum dolor sit amet.</h2>
-
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde odit
-            saepe deserunt atque obcaecati voluptatum, quasi consequuntur sit
-            porro neque reprehenderit laboriosam animi quas impedit.
-          </p>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde odit
-            saepe deserunt atque obcaecati voluptatum, quasi consequuntur sit
-            porro neque reprehenderit laboriosam animi quas impedit.
-          </p>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde odit
-            saepe deserunt atque obcaecati voluptatum, quasi consequuntur sit
-            porro neque reprehenderit laboriosam animi quas impedit.
-          </p>
-        </div>
+        <div className={styles.aboutInfo}>{renderAboutInfo}</div>
       </div>
       {renderHeading}
       <Marquee>{renderTechStack}</Marquee>

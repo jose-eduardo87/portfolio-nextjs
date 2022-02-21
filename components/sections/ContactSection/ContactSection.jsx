@@ -1,4 +1,4 @@
-import { createRef, useEffect, useRef, useState, useReducer } from "react";
+import { createRef, useEffect, useRef, useState } from "react";
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { GlobeWrapper } from "@/components/GlobeWrapper";
@@ -19,7 +19,7 @@ export default function ContactSection({ clientIP }) {
   const { selector } = gsap.utils;
   const queryContact = selector(contactRef);
   const renderHeading = isEnglish ? (
-    <h2>{"LET'S CONNECT!"}</h2>
+    <h2>LET&apos;S CONNECT!</h2>
   ) : (
     <h2>{"VAMOS NOS CONECTAR!"}</h2>
   );

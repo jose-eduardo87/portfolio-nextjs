@@ -69,9 +69,20 @@ export default function WorkSection() {
           borderColor="#000000"
           className={styles.tooltip}
         >
-          <p className={styles.tooltipMessage}>
-            {isEnglish ? "KINDA WORKING NOW." : "MEIO QUE FUNCIONANDO AGORA."}
-          </p>
+          {isEnglish ? (
+            <p className={styles.tooltipMessage}>
+              THIS SECTION WILL BE IN CONSTANT
+              <br />
+              CHANGE! COME BACK HERE <br />
+              TO SEE NEW STUFF.
+            </p>
+          ) : (
+            <p className={styles.tooltipMessage}>
+              ESTA SEÇÃO ESTARÁ EM MUDANÇA <br />
+              CONSTANTE! VOLTE AQUI DEPOIS PARA <br />
+              VER COISAS NOVAS.
+            </p>
+          )}
         </ReactTooltip>
         <div className={styles.hoverInfo}>
           <p
