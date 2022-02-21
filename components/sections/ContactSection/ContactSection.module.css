@@ -4,13 +4,11 @@
 
 .root h2 {
   font-weight: 300;
-  letter-spacing: 1px;
 }
 
 .root p {
   text-align: justify;
   font-weight: 100;
-  letter-spacing: 1px;
   color: #028dff; /* CHANGE THIS COLOR */
 }
 
@@ -22,7 +20,6 @@
 
 .contactForm {
   width: 50%;
-  /* height: 45vh; */
 }
 
 .globeContainer {

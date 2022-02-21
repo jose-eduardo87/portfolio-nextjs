@@ -20,7 +20,6 @@
 }
 
 .heroContent h1 {
-  letter-spacing: 2px;
   font-size: 5rem;
   font-weight: 900;
   text-align: justify;
@@ -29,7 +28,6 @@
 .heroContent p {
   color: rgb(29, 164, 182);
   font-weight: 100;
-  letter-spacing: 1px;
   font-size: 2.5rem;
 }
 

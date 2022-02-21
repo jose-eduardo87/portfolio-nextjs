@@ -20,8 +20,8 @@ export const WORK = [
       ptBR: "Apollo Quay Resort",
     },
     description: {
-      en: "Commercial website for a building complex in Australia. On this project, I also used NextJS as framework together with MongoDB as a solution for the database. Building a bookings system was a really good experience as I had to extensively work with Dates in JavaScript.",
-      ptBR: "Website comercial para um complexo de condomínios na Austrália. Neste projeto utilizei novamente o NextJS como framework aliado ao MongoDB como solução para o banco de dados. Construir um sistema de bookings foi uma experiência bastante positiva visto o extensivo trabalho com datas em JavaScript.",
+      en: "Commercial website for a building complex in Australia. On this project, I also used NextJS as framework together with MongoDB as a solution for the database. Building a bookings system was a really good experience as I had to work extensively with Dates in JavaScript.",
+      ptBR: "Website comercial para um complexo de condomínios na Austrália. Neste projeto utilizei novamente o NextJS como framework aliado ao MongoDB como solução para o banco de dados. Construir um sistema de bookings foi uma experiência bastante positiva visto o extensivo trabalho com Dates em JavaScript.",
     },
     // image: IMG_PATH,
     liveLink: "https://www.28apolloquay.com/",

@@ -17,9 +17,11 @@ import {
   FaFacebookSquare,
   FaGithubSquare,
   FaLinkedinIn,
+  FaRegBell,
   FaTwitterSquare,
 } from "react-icons/fa";
 import { PROFILE_PHOTO } from "helpers/paths";
+import { useTheme } from "store/theme-context";
 import { useLanguage } from "store/language-context";
 
 import styles from "./AboutSection.module.css";
@@ -27,6 +29,7 @@ import Link from "next/link";
 
 export default function AboutSection() {
   const aboutRef = useRef(null);
+  const { isDark } = useTheme();
   const queryAbout = gsap.utils.selector(aboutRef);
   const { isEnglish } = useLanguage();
   const iconStyles = useMemo(() => {
@@ -57,8 +60,17 @@ export default function AboutSection() {
         am open to proposals and freelance jobs.
       </p>
 
-      <Link passHref href="/#contact">
-        <p>Let&apos;s build something special.</p>
+      <Link href="/#contact">
+        <a
+          style={
+            isDark
+              ? { color: "rgb(0, 86, 77)" }
+              : { color: "rgb(138, 186, 174" }
+          }
+          className={styles.cta}
+        >
+          <strong>Let&apos;s build something special. &#8594;</strong>
+        </a>
       </Link>
     </>
   ) : (
@@ -83,8 +95,8 @@ export default function AboutSection() {
         <i>Front-End</i>. Estou aberto a propostas e trabalhos <i>freelance</i>.
       </p>
 
-      <Link passHref href="/#contact">
-        <p>Vamos construir algo especial.</p>
+      <Link href="/#contact">
+        <a className={styles.cta}>Vamos construir algo especial. &#8594;</a>
       </Link>
     </>
   );

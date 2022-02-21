@@ -1,11 +1,10 @@
 .root {
   width: 100%;
-  /* height: 324px; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 4px;
+  margin-bottom: 0.5rem;
 }
 
 .root .presentationGroup:first-of-type {
@@ -21,13 +20,11 @@
 
 .image {
   max-width: 50%;
-  height: 350px;
   border: 1px solid red;
 }
 
 .presentationGroup {
   min-width: 50%;
-  height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -38,13 +35,12 @@
   align-self: center;
   font-size: 1.2rem;
   font-weight: 600;
-  letter-spacing: 1px;
   text-transform: uppercase;
+  margin-bottom: 2rem;
 }
 
 .description {
   font-weight: 100;
-  letter-spacing: 1px;
   text-align: justify;
 }
 
