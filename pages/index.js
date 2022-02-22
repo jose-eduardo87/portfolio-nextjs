@@ -14,7 +14,7 @@ export default function Portfolio({ ip }) {
   return (
     <>
       <Head>
-        <title>José Eduardo - Portfolio</title>
+        <title>José Eduardo</title>
         <meta
           name="description"
           content="Put a description of the page here."

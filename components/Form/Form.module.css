@@ -1,5 +1,4 @@
 .root {
-  /* height: 80%; */
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -18,8 +17,9 @@
 }
 
 .errorMessage {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: 100;
+  letter-spacing: 1px;
   margin: 6px 0 6px 0;
 }
 

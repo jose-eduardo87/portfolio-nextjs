@@ -8,8 +8,7 @@
 
 .root p {
   text-align: justify;
-  font-weight: 100;
-  color: #028dff; /* CHANGE THIS COLOR */
+  font-weight: 600;
 }
 
 .flexContainer {

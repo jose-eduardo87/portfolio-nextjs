@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }) {
       <ThemeWrapper>
         <Layout>
           <Head>
-            <title>José Eduardo - Portfolio</title>
+            <title>José Eduardo</title>
             {/* This title will be loaded before any other title. Use it as a fallback in case for some reason some page do not work. */}
             <meta
               name="viewport"

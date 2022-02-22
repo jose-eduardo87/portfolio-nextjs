@@ -3,18 +3,19 @@ import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { GlobeWrapper } from "@/components/GlobeWrapper";
 import { Form } from "@/components/Form";
+import { useTheme } from "store/theme-context";
 import { useLanguage } from "store/language-context";
 
 import styles from "./ContactSection.module.css";
 
 export default function ContactSection({ clientIP }) {
-  console.log("Inside contact.");
   const contactRef = useRef();
   const globeRef = createRef();
   const [coordinates, setCoordinates] = useState({
     latitude: "",
     longitude: "",
   });
+  const { isDark } = useTheme();
   const { isEnglish } = useLanguage();
   const { selector } = gsap.utils;
   const queryContact = selector(contactRef);
@@ -60,13 +61,28 @@ export default function ContactSection({ clientIP }) {
 
   return (
     <section id="contact" className={styles.root} ref={contactRef}>
-      <h1>{isEnglish ? "CONTACT" : "CONTATO"}</h1>
+      <h1
+        style={
+          isDark
+            ? { webkitTextStrokeColor: "white" }
+            : { webkitTextStrokeColor: "black" }
+        }
+      >
+        {isEnglish ? "CONTACT" : "CONTATO"}
+      </h1>
       <div className={styles.flexContainer}>
         <div className={styles.contactForm}>
           {renderHeading}
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores,
-            iure!
+          <p
+            style={
+              isDark
+                ? { color: "rgb(0, 86, 77)" }
+                : { color: "rgb(138, 186, 174" }
+            }
+          >
+            {isEnglish
+              ? "Still have questions or maybe just want to say hi, please fill in the form below and I will get to you as soon as I can."
+              : "Alguma dúvida ficou no ar ou quer apenas dizer um Oi! para mim? Preencha o formulário abaixo e eu entrarei em contato o mais rápido que puder."}
           </p>
           <Form isEnglish={isEnglish} />
         </div>

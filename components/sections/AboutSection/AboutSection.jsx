@@ -17,7 +17,6 @@ import {
   FaFacebookSquare,
   FaGithubSquare,
   FaLinkedinIn,
-  FaRegBell,
   FaTwitterSquare,
 } from "react-icons/fa";
 import { PROFILE_PHOTO } from "helpers/paths";
@@ -30,8 +29,8 @@ import Link from "next/link";
 export default function AboutSection() {
   const aboutRef = useRef(null);
   const { isDark } = useTheme();
-  const queryAbout = gsap.utils.selector(aboutRef);
   const { isEnglish } = useLanguage();
+  const queryAbout = gsap.utils.selector(aboutRef);
   const iconStyles = useMemo(() => {
     return {
       width: "150px",
@@ -41,7 +40,7 @@ export default function AboutSection() {
 
   const renderAboutInfo = isEnglish ? (
     <>
-      <h2>Lorem ipsum dolor sit amet.</h2>
+      <h2>Building creative stuff for the web.</h2>
 
       <p>
         I am a Brazilian Full-Stack developer. I can confidently say that
@@ -75,7 +74,7 @@ export default function AboutSection() {
     </>
   ) : (
     <>
-      <h2>Lorem ipsum dolor sit amet.</h2>
+      <h2>Criando coisas criativas para a web</h2>
 
       <p>
         Sou um desenvolvedor <i>Full-Stack</i> brasileiro. Posso dizer
@@ -173,7 +172,15 @@ export default function AboutSection() {
 
   return (
     <section id="about" className={styles.root} ref={aboutRef}>
-      <h1>{isEnglish ? "ABOUT" : "SOBRE"}</h1>
+      <h1
+        style={
+          isDark
+            ? { webkitTextStrokeColor: "white" }
+            : { webkitTextStrokeColor: "black" }
+        }
+      >
+        {isEnglish ? "ABOUT" : "SOBRE"}
+      </h1>
       <div className={styles.mainPanel}>
         <div className={styles.profile}>
           <div className={`picSelector ${styles.photo}`}>

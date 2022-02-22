@@ -56,7 +56,15 @@ export default function WorkSection() {
 
   return (
     <section id="work" className={styles.root} ref={workRef}>
-      <h1>{isEnglish ? "WORK" : "TRABALHOS"}</h1>
+      <h1
+        style={
+          isDark
+            ? { webkitTextStrokeColor: "white" }
+            : { webkitTextStrokeColor: "black" }
+        }
+      >
+        {isEnglish ? "WORK" : "TRABALHOS"}
+      </h1>
       <span className={styles.vintageMan}>
         <VintageMan data-tip data-for="vintageMan" width={240} height={252} />
         <ReactTooltip
