@@ -8,7 +8,6 @@ import useHttp from "hooks/use-http";
 import styles from "./Form.module.css";
 
 const Form = ({ isEnglish }) => {
-  console.log("Inside form.");
   const { isDark } = useTheme();
   const {
     value: nameValue,
@@ -44,7 +43,7 @@ const Form = ({ isEnglish }) => {
       return;
     }
 
-    await sendRequest("/api/contacts", {
+    await sendRequest("/api/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: {
@@ -64,7 +63,21 @@ const Form = ({ isEnglish }) => {
 
   return (
     <form className={`formSelector ${styles.root}`} onSubmit={formHandler}>
-      {error && <p style={{ color: errorMessageColor }}>{error}</p>}
+      {error && (
+        <p
+          style={{
+            color: errorMessageColor,
+            position: "absolute",
+            top: "10%",
+            right: "50%",
+            transform: "translate(50,-50)",
+            // width: "100%",
+            backgroundColor: "red",
+          }}
+        >
+          {error}
+        </p>
+      )}
       <Input
         type="text"
         placeholder={isEnglish ? "Your name" : "Seu nome"}

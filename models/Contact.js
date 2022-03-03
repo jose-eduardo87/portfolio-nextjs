@@ -17,6 +17,10 @@ const ContactSchema = new Schema({
     type: String,
     required: [true, "Please provide some additional info."],
   },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
 });
 
 export default models.Contact || model("Contact", ContactSchema);

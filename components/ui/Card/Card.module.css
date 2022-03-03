@@ -8,7 +8,7 @@
 }
 
 .root .presentationGroup:first-of-type {
-  margin-left: 1rem;
+  margin-left: 2rem;
 }
 
 .topRow {
@@ -18,17 +18,8 @@
   align-items: center;
 }
 
-.image {
-  max-width: 50%;
-  border: 1px solid red;
-}
-
 .presentationGroup {
-  min-width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  width: 100%;
 }
 
 .title {
@@ -67,4 +58,16 @@
 
 .liveIcon:hover {
   fill: #a23333;
+}
+
+@media (max-width: 1875px) {
+  .presentationGroup {
+    margin-left: 2rem;
+  }
+}
+
+@media (max-width: 1600px) {
+  .projectImage {
+    display: none;
+  }
 }

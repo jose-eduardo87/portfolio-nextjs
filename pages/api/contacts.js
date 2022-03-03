@@ -23,9 +23,6 @@ export default async function handler(req, res) {
     case "POST":
       try {
         const { name, email, message } = req.body;
-
-        console.log(name, email, message);
-
         const contact = await Contact.create({ name, email, message });
 
         return res.status(201).json({ success: true, data: contact });

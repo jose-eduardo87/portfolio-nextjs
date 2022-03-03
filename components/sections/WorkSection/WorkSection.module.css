@@ -42,13 +42,13 @@
   transform: skew(-25deg);
 }
 
-@media (min-width: 1365px) {
+@media (min-width: 1876px) {
   .root div:first-of-type {
-    width: 60%;
+    width: 70%;
   }
 }
 
-@media (max-width: 1364px) {
+@media (max-width: 1875px) {
   .vintageMan {
     display: none;
   }

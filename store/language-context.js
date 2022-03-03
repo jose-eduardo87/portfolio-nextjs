@@ -1,16 +1,22 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useCallback } from "react";
 
 const LanguageContext = createContext({
   isEnglish: true,
+  setIsEnglish: (boolean) => {},
   toggleLanguage: () => {},
 });
 
 export default function LanguageProvider({ children }) {
   const [isEnglish, setIsEnglish] = useState(true);
-  const toggleLanguage = () => setIsEnglish((currentState) => !currentState);
+  const toggleLanguage = useCallback(
+    () => setIsEnglish((currentState) => !currentState),
+    []
+  );
 
   return (
-    <LanguageContext.Provider value={{ isEnglish, toggleLanguage }}>
+    <LanguageContext.Provider
+      value={{ isEnglish, setIsEnglish, toggleLanguage }}
+    >
       {children}
     </LanguageContext.Provider>
   );

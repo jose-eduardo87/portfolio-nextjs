@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Head from "next/head";
 import { Layout } from "@/components/common";
 import { Container } from "@/components/ui";
@@ -7,39 +8,51 @@ import {
   ContactSection,
   WorkSection,
 } from "@/components/sections";
+import { useLanguage } from "store/language-context";
 
 Portfolio.Layout = Layout;
 
-export default function Portfolio({ ip }) {
+export default function Portfolio({ lat, lon, countryCode }) {
+  const { setIsEnglish } = useLanguage();
+
+  // CHECK TO VERIFY IF INITIAL CONTENT SHOULD BE LOADED IN ENGLISH OR PORTUGUESE. BY DEFAULT, IT IS SET TO LOAD IN ENGLISH IN "language-context".
+  useEffect(() => {
+    if (countryCode === "BR") {
+      setIsEnglish(false);
+    }
+  }, [countryCode, setIsEnglish]);
+
   return (
     <>
       <Head>
         <title>José Eduardo</title>
-        <meta
-          name="description"
-          content="Put a description of the page here."
-        />
+        <meta name="description" content="Welcome to my portfolio." />
       </Head>
       <HeroSection />
       <Container>
         <AboutSection />
         <WorkSection />
-        <ContactSection clientIP={ip} />
+        <ContactSection coords={{ latitude: lat, longitude: lon }} />
       </Container>
     </>
   );
 }
 
 export async function getServerSideProps({ req }) {
-  const forwarded = req.headers["x-forwarded-for"];
+  // const forwarded = req.headers["x-forwarded-for"];
+  // const ip = forwarded
+  //   ? forwarded.split(/, /)[0]
+  //   : req.connection.remoteAddress;
 
-  const ip = forwarded
-    ? forwarded.split(/, /)[0]
-    : req.connection.remoteAddress;
+  const clientIPTest = "2804:d49:6646:8c00:f598:f901:4dda:fdc8";
+  const response = await fetch(`http://ip-api.com/json/${clientIPTest}`);
+  const { lat, lon, countryCode } = await response.json();
 
   return {
     props: {
-      ip,
+      lat,
+      lon,
+      countryCode,
     },
   };
 }

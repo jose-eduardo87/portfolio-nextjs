@@ -20,12 +20,13 @@ export default function WorkSection() {
   const { isEnglish } = useLanguage();
   const renderWork = useMemo(
     () =>
-      WORK.map(({ title, description, githubLink, liveLink }, key) => (
+      WORK.map(({ title, description, image, githubLink, liveLink }, key) => (
         <Card
           key={key}
           i={key}
           title={isEnglish ? title["en"] : title["ptBR"]}
           description={isEnglish ? description["en"] : description["ptBR"]}
+          image={image && image}
           githubLink={githubLink}
           liveLink={liveLink}
         />
@@ -56,13 +57,7 @@ export default function WorkSection() {
 
   return (
     <section id="work" className={styles.root} ref={workRef}>
-      <h1
-        style={
-          isDark
-            ? { webkitTextStrokeColor: "white" }
-            : { webkitTextStrokeColor: "black" }
-        }
-      >
+      <h1 style={{ WebkitTextStrokeColor: isDark ? "white" : "black" }}>
         {isEnglish ? "WORK" : "TRABALHOS"}
       </h1>
       <span className={styles.vintageMan}>
@@ -94,11 +89,10 @@ export default function WorkSection() {
         </ReactTooltip>
         <div className={styles.hoverInfo}>
           <p
-            style={
-              isDark
-                ? { backgroundColor: "#FFFFFF", color: "#000000" }
-                : { backgroundColor: "#000000", color: "#FFFFFF" }
-            }
+            style={{
+              backgroundColor: isDark ? "#FFFFFF" : "#000000",
+              color: isDark ? "#000000" : "#FFFFFF",
+            }}
             className={styles.hoverMe}
           >
             {isEnglish

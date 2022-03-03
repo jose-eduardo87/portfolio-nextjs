@@ -82,11 +82,11 @@ export default function Navbar() {
                 style={{
                   ...styleIcons,
                   color: "white",
-                  left: "-15%",
+                  left: "-30%",
                   fontSize: "16px",
                 }}
               >
-                EN
+                {isEnglish ? "EN" : "PT"}
               </span>
             ),
             unchecked: (
@@ -98,7 +98,7 @@ export default function Navbar() {
                   fontSize: "16px",
                 }}
               >
-                PT
+                {isEnglish ? "EN" : "PT"}
               </span>
             ),
           }}

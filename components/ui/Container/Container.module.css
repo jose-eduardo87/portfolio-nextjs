@@ -8,17 +8,26 @@
 }
 
 .container section h1 {
+  align-self: flex-start;
+  margin: 0 0 2rem 2rem;
   font-size: 5rem;
   letter-spacing: 8px;
   margin-bottom: 3rem;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke-width: 1px;
-  /* -webkit-text-stroke-color: black; */
+  -webkit-text-stroke-color: white;
   color: transparent;
 }
 
 .container section:last-child {
   margin-bottom: 4rem;
+}
+
+@media (max-width: 1180px) {
+  .container section h1 {
+    align-self: center;
+    text-align: center;
+  }
 }
 
 @media (max-width: 768px) {

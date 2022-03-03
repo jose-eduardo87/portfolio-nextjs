@@ -2,6 +2,7 @@ import { useRef, useEffect } from "react";
 import { gsap } from "gsap/dist/gsap";
 import { Typewriter } from "react-simple-typewriter";
 import { HERO_VIDEO } from "helpers/paths";
+import { useTheme } from "store/theme-context";
 import { useLanguage } from "store/language-context";
 
 import styles from "./HeroSection.module.css";
@@ -11,12 +12,12 @@ export default function HeroSection() {
   const { isEnglish } = useLanguage();
   const queryHero = gsap.utils.selector(sectionRef);
   const renderHeading = isEnglish ? (
-    <h1 className="headingHero">
+    <h1 className={`${styles.heading} headingHero`}>
       Hello there. <br />
       My name is Eduardo.
     </h1>
   ) : (
-    <h1 className="headingHero">
+    <h1 className={`${styles.heading} headingHero`}>
       Olá. <br />
       Meu nome é Eduardo.
     </h1>

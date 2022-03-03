@@ -23,6 +23,12 @@ function MyApp({ Component, pageProps }) {
               content="initial-scale=1.0, width=device-width"
             />
           </Head>
+          <Head>
+            <meta
+              name="keyword"
+              content="portfolio, javascript, developer, react, nextjs"
+            />
+          </Head>
           <Component {...pageProps} />
         </Layout>
       </ThemeWrapper>

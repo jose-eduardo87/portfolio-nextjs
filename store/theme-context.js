@@ -14,22 +14,8 @@ export default function ThemeWrapper({ children }) {
   useEffect(() => {
     document.body.style.transition = ".5s background-color";
 
-    const LIGHT_BG = [
-      "#E6BEAE",
-      "#EFE9AE",
-      "#D6E2E9",
-      "#FDE2E4",
-      "#DAB6FC",
-      "#FDC5F5",
-    ];
-    const DARK_BG = [
-      "#161B33",
-      "#00296B",
-      "#3C096C",
-      "#212529",
-      "#14213D",
-      "#012A4A",
-    ];
+    const LIGHT_BG = ["#F9E7FF", "#FC9EC2", "#BFB7C6"];
+    const DARK_BG = ["#000000", "#010B2F", "#1C0635"];
 
     if (isDark) {
       setCurrentBGHex(

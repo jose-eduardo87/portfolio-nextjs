@@ -31,12 +31,6 @@ export default function AboutSection() {
   const { isDark } = useTheme();
   const { isEnglish } = useLanguage();
   const queryAbout = gsap.utils.selector(aboutRef);
-  const iconStyles = useMemo(() => {
-    return {
-      width: "150px",
-      height: "150px",
-    };
-  }, []);
 
   const renderAboutInfo = isEnglish ? (
     <>
@@ -61,11 +55,7 @@ export default function AboutSection() {
 
       <Link href="/#contact">
         <a
-          style={
-            isDark
-              ? { color: "rgb(0, 86, 77)" }
-              : { color: "rgb(138, 186, 174" }
-          }
+          style={{ color: isDark ? "#B3D9B3" : "#00B000" }}
           className={styles.cta}
         >
           <strong>Let&apos;s build something special. &#8594;</strong>
@@ -74,7 +64,7 @@ export default function AboutSection() {
     </>
   ) : (
     <>
-      <h2>Criando coisas criativas para a web</h2>
+      <h2>Criando coisas criativas para a web.</h2>
 
       <p>
         Sou um desenvolvedor <i>Full-Stack</i> brasileiro. Posso dizer
@@ -95,7 +85,15 @@ export default function AboutSection() {
       </p>
 
       <Link href="/#contact">
-        <a className={styles.cta}>Vamos construir algo especial. &#8594;</a>
+        <a
+          className={styles.cta}
+          style={{
+            marginBottom: "2rem",
+            color: isDark ? "#B3D9B3" : "#2D636D",
+          }}
+        >
+          Vamos construir algo especial. &#8594;
+        </a>
       </Link>
     </>
   );
@@ -105,34 +103,36 @@ export default function AboutSection() {
   ) : (
     <h3>Tecnologias que trabalho atualmente:</h3>
   );
-  const renderTechStack = useMemo(
-    () =>
-      [
-        <Git key="Git Icon" alt="Git Icon" {...iconStyles} />,
-        <GSAP key="GSAP Icon" alt="GSAP Icon" {...iconStyles} />,
-        <MongoDB key="MongoDB Icon" alt="MongoDB Icon" {...iconStyles} />,
-        <NextJS key="NextJS Icon" alt="NextJS Icon" {...iconStyles} />,
-        <NodeJS key="NodeJS Icon" alt="NodeJS Icon" {...iconStyles} />,
-        <Postman key="Postman Icon" alt="Postman Icon" {...iconStyles} />,
-        <ReactJS key="ReactJS Icon" alt="ReactJS Icon" {...iconStyles} />,
-        <TypeScript
-          key="TypeScript Icon"
-          alt="TypeScript Icon"
-          {...iconStyles}
-        />,
-      ].map((icon, i) => (
-        <div
-          style={{
-            display: "inline-block",
-            marginRight: "1rem",
-          }}
-          key={i}
-        >
-          {icon}
-        </div>
-      )),
-    [iconStyles]
-  );
+  const renderTechStack = useMemo(() => {
+    const iconStyles = {
+      width: "150px",
+      height: "150px",
+    };
+    return [
+      <Git key="Git Icon" alt="Git Icon" {...iconStyles} />,
+      <GSAP key="GSAP Icon" alt="GSAP Icon" {...iconStyles} />,
+      <MongoDB key="MongoDB Icon" alt="MongoDB Icon" {...iconStyles} />,
+      <NextJS key="NextJS Icon" alt="NextJS Icon" {...iconStyles} />,
+      <NodeJS key="NodeJS Icon" alt="NodeJS Icon" {...iconStyles} />,
+      <Postman key="Postman Icon" alt="Postman Icon" {...iconStyles} />,
+      <ReactJS key="ReactJS Icon" alt="ReactJS Icon" {...iconStyles} />,
+      <TypeScript
+        key="TypeScript Icon"
+        alt="TypeScript Icon"
+        {...iconStyles}
+      />,
+    ].map((icon, i) => (
+      <div
+        style={{
+          display: "inline-block",
+          marginRight: "1rem",
+        }}
+        key={i}
+      >
+        {icon}
+      </div>
+    ));
+  }, []);
 
   useEffect(() => gsap.registerPlugin(ScrollTrigger), []);
 
@@ -172,13 +172,7 @@ export default function AboutSection() {
 
   return (
     <section id="about" className={styles.root} ref={aboutRef}>
-      <h1
-        style={
-          isDark
-            ? { webkitTextStrokeColor: "white" }
-            : { webkitTextStrokeColor: "black" }
-        }
-      >
+      <h1 style={{ WebkitTextStrokeColor: isDark ? "white" : "black" }}>
         {isEnglish ? "ABOUT" : "SOBRE"}
       </h1>
       <div className={styles.mainPanel}>
