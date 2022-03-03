@@ -39,13 +39,13 @@ export default function Portfolio({ lat, lon, countryCode }) {
 }
 
 export async function getServerSideProps({ req }) {
-  // const forwarded = req.headers["x-forwarded-for"];
-  // const ip = forwarded
-  //   ? forwarded.split(/, /)[0]
-  //   : req.connection.remoteAddress;
+  const forwarded = req.headers["x-forwarded-for"];
+  const ip = forwarded
+    ? forwarded.split(/, /)[0]
+    : req.connection.remoteAddress;
 
-  const clientIPTest = "2804:d49:6646:8c00:f598:f901:4dda:fdc8";
-  const response = await fetch(`http://ip-api.com/json/${clientIPTest}`);
+  // const clientIPTest = "2804:d49:6646:8c00:f598:f901:4dda:fdc8";
+  const response = await fetch(`http://ip-api.com/json/${ip}`);
   const { lat, lon, countryCode } = await response.json();
 
   return {
