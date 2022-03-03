@@ -1,6 +1,4 @@
 import { createRef, useEffect, useRef, useState } from "react";
-// import { gsap } from "gsap/dist/gsap";
-// import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { GlobeWrapper } from "@/components/GlobeWrapper";
 import { Form } from "@/components/Form";
 import { useTheme } from "store/theme-context";
@@ -9,7 +7,6 @@ import { useLanguage } from "store/language-context";
 import styles from "./ContactSection.module.css";
 
 export default function ContactSection({ coords }) {
-  console.log("COORDS: ", coords);
   const contactRef = useRef();
   const globeRef = createRef();
   const [coordinates, setCoordinates] = useState({
@@ -18,8 +15,6 @@ export default function ContactSection({ coords }) {
   });
   const { isDark } = useTheme();
   const { isEnglish } = useLanguage();
-  // const { selector } = gsap.utils;
-  // const queryContact = selector(contactRef);
   const renderHeading = isEnglish ? (
     <h2>LET&apos;S CONNECT!</h2>
   ) : (

@@ -43,7 +43,7 @@ const Form = ({ isEnglish }) => {
       return;
     }
 
-    await sendRequest("/api/contact", {
+    await sendRequest("/api/contacts", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: {
