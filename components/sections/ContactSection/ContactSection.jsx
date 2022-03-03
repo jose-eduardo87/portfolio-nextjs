@@ -9,6 +9,7 @@ import { useLanguage } from "store/language-context";
 import styles from "./ContactSection.module.css";
 
 export default function ContactSection({ coords }) {
+  console.log("COORDS: ", coords);
   const contactRef = useRef();
   const globeRef = createRef();
   const [coordinates, setCoordinates] = useState({
@@ -34,29 +35,6 @@ export default function ContactSection({ coords }) {
 
     fetchData();
   }, [coords]);
-
-  // DISABLED. CAUSING TOO MANY RERENDERS TO THE CONTACT SECTION
-  // useEffect(() => {
-  //   const animateFormOnEnter = (element) => {
-  //     gsap.fromTo(element, { autoAlpha: 0 }, { autoAlpha: 1, duration: 2.5 });
-  //   };
-  //   const hide = (form) => gsap.set(form, { autoAlpha: 0 });
-
-  //   gsap.registerPlugin(ScrollTrigger);
-
-  //   queryContact(".formSelector").forEach((form) => {
-  //     hide(form);
-
-  //     ScrollTrigger.create({
-  //       trigger: form,
-  //       onEnter: () => animateFormOnEnter(form),
-  //       onEnterBack: () => animateFormOnEnter(form),
-  //       onLeave: () => hide(form),
-  //     });
-  //   });
-
-  //   () => ScrollTrigger.getAll().forEach((t) => t.kill());
-  // }, [queryContact]);
 
   return (
     <section id="contact" className={styles.root} ref={contactRef}>

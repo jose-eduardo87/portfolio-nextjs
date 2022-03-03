@@ -44,7 +44,6 @@ export async function getServerSideProps({ req }) {
     ? forwarded.split(/, /)[0]
     : req.connection.remoteAddress;
 
-  // const clientIPTest = "2804:d49:6646:8c00:f598:f901:4dda:fdc8";
   const response = await fetch(`http://ip-api.com/json/${ip}`);
   const { lat, lon, countryCode } = await response.json();
 
